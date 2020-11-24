@@ -7,7 +7,7 @@
 # /_____/_/ \__/\__/\__/_//_/
 
 # File:         bfetch
-# Description:  Fetch that SuperB
+# Description:  Dynamic fetching tool that SuperB
 # Author:       NNB
 #               └─ https://github.com/NNBnh
 # URL:          https://github.com/NNBnh/bfetch
@@ -30,29 +30,37 @@
 # Values
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 
-[ -x "$XDG_CONFIG_HOME/bfetch/info"  ] && INFO_FILE="${BFETCH_INFO-$XDG_CONFIG_HOME/bfetch/info}"    || INFO_FILE="$BFETCH_INFO"
-[ -x "$XDG_CONFIG_HOME/bfetch/art"   ] && ART_FILE="${BFETCH_ART-$XDG_CONFIG_HOME/bfetch/art}"       || ART_FILE="$BFETCH_ART"
-[ -x "$XDG_CONFIG_HOME/bfetch/color" ] && COLOR_FILE="${BFETCH_COLOR-$XDG_CONFIG_HOME/bfetch/color}" || COLOR_FILE="$BFETCH_COLOR"
+[ -x "$XDG_CONFIG_HOME/bfetch/info"  ] && INFO_COMMANDS="${BFETCH_INFO-$XDG_CONFIG_HOME/bfetch/info}"    || INFO_COMMANDS="$BFETCH_INFO"
+[ -x "$XDG_CONFIG_HOME/bfetch/art"   ] && ART_COMMANDS="${BFETCH_ART-$XDG_CONFIG_HOME/bfetch/art}"       || ART_COMMANDS="$BFETCH_ART"
+[ -x "$XDG_CONFIG_HOME/bfetch/color" ] && COLOR_COMMANDS="${BFETCH_COLOR-$XDG_CONFIG_HOME/bfetch/color}" || COLOR_COMMANDS="$BFETCH_COLOR"
 
-PADDING="${BFETCH_PADDING:-1}"
-SEPARATOR="${BFETCH_SEPARATOR:-2}"
+[ -z "$BFETCH_INFO" ] && { printf 'info element commands is not found'; exit 1 }
+
 CLASSIC_MODE="${BFETCH_CLASSIC_MODE:-false}"
-CLASSIC_ART_RIGHT="${BFETCH_CLASSIC_ART_RIGHT:-false}"
-PROMPT_HEIGHT="${BFETCH_PROMPT_HEIGHT:-1}"
+CLASSIC_ART_RIGHT="${BFETCH_ART_RIGHT:-false}"
+PADDING="${BFETCH_PADDING:-1}"            ; [ "$PADDING"       -ge '0' ] && { printf 'padding must be 0+'; exit 1 }
+SEPARATOR="${BFETCH_SEPARATOR:-2}"        ; [ "$SEPARATOR"     -ge '0' ] && { printf 'separator must be 0+'; exit 1 }
+PROMPT_HEIGHT="${BFETCH_PROMPT_HEIGHT:-1}"; [ "$PROMPT_HEIGHT" -ge '0' ] && { printf 'prompt height must be 0+'; exit 1 }
 
 TERM_SIZE=$(stty size)
-TERM_HEIGHT=${TERM_SIZE% *}
-TERM_WIDTH=${TERM_SIZE#* }
+TERM_HEIGHT="${TERM_SIZE% *}"
+TERM_WIDTH="${TERM_SIZE#* }"
 
 for element in INFO ART COLOR; do
-	[ -n "$(eval "printf \"\$${element}_FILE\"")" ] && {
-		eval "textart_$element=\$(script --quiet /dev/null --command \"\$${element}_FILE\")"
-		eval "textraw_$element=\$(printf \"\$textart_$element\" | awk '{gsub(\"\\x1B[[0-9;]*[JKmsu]\",\"\");print}')"
+	eval "[ -n \"\$${element}_COMMANDS\" ]" && {
+		eval "textart_$element=\$(script --quiet /dev/null --command \"\$${element}_COMMANDS\")"
+		eval "textraw_$element=\$(printf '%s' \"\$textart_$element\" | awk '{gsub(\"\\x1B[[0-9;]*[JKmsu]\",\"\");print}')"
+
+		eval "textart_$element=\${textart_$element//\\\\/\\\\\\\}"
+		eval "textart_$element=\${textart_$element//%/%%}"
+		eval "TEXTART_$element=\$textart_$element"
 	}
 
-	eval "TEXTART_$element=\${textart_$element//\\\\/\\\\\\\}"
-	eval "${element}_HEIGHT=\$(printf \"\$textraw_$element\" | awk 'END{ print NR }')"
-	eval "${element}_WIDTH=\$(printf \"\$textraw_$element\" | awk 'length >= max_length { max_length = length } END { print max_length }')"
+	eval "${element}_HEIGHT=\$(( \$(printf \"\$textraw_$element\" | awk 'END {print NR}') + 0 ))"
+	eval "${element}_WIDTH=\$(( \$(printf \"\$textraw_$element\" | awk 'length>=max_length {max_length=length} END {print max_length}') + 0 ))"
+
+	eval "export BFETCH_${element}_HEIGHT=\$${element}_HEIGHT"
+	eval "export BFETCH_${element}_WIDTH=\$${element}_WIDTH"
 done
 
 
@@ -66,7 +74,7 @@ print_textart() {
 
 fetch_classic() {
 	[ "$CLASSIC_ART_RIGHT" = 'true' ] && order='info_color reset art' || order='art reset info_color'
-	[ "$modul_color" = 'possible' ] && [ -n "$TEXTART_COLOR" ] && [ "$COLOR_WIDTH" -gt "$INFO_WIDTH" ] && [ "$INFO_HEIGHT" -lt "$ART_HEIGHT" ] && INFO_COLOR_WIDTH="$COLOR_WIDTH" || INFO_COLOR_WIDTH="$INFO_WIDTH"
+	[ "$MODUL_COLOR" = 'possible' ] && [ -n "$TEXTART_COLOR" ] && [ "$COLOR_WIDTH" -gt "$INFO_WIDTH" ] && [ "$INFO_HEIGHT" -lt "$ART_HEIGHT" ] && INFO_COLOR_WIDTH="$COLOR_WIDTH" || INFO_COLOR_WIDTH="$INFO_WIDTH"
 	fetch_padding_check=$(( $TERM_WIDTH - ( $ART_WIDTH + $INFO_COLOR_WIDTH + $SEPARATOR ) ))
 	FETCH_PADDING=$(( $fetch_padding_check < $PADDING ? $fetch_padding_check : $PADDING ))
 	group_padding='0'
@@ -83,7 +91,7 @@ fetch_classic() {
 				print_textart "$TEXTART_INFO" "$(( $FETCH_PADDING + $group_padding ))"
 				info_color_height="$INFO_HEIGHT"
 
-				[ "$modul_color" = 'possible' ] && [ -n "$TEXTART_COLOR" ] && {
+				[ "$MODUL_COLOR" = 'possible' ] && [ -n "$TEXTART_COLOR" ] && {
 					print="$print \\n\\n"
 					print_textart "$TEXTART_COLOR" "$(( $FETCH_PADDING + $group_padding ))"
 					info_color_height=$(( $INFO_HEIGHT + 1 + $COLOR_HEIGHT ))
@@ -102,13 +110,13 @@ fetch_classic() {
 	[ "$fetch_end" -gt '0' ] && print="$print\\033[${fetch_end}B"
 }
 
-fetch_flag() {
-	[ "$modul_art" = 'possible' ] && [ -n "$TEXTART_ART" ] && print_textart "$TEXTART_ART" "$(( ( $TERM_WIDTH - $ART_WIDTH ) / 2 ))"
+fetch_paper() {
+	[ "$MODUL_ART" = 'possible' ] && [ -n "$TEXTART_ART" ] && print_textart "$TEXTART_ART" "$(( ( $TERM_WIDTH - $ART_WIDTH ) / 2 ))"
 
 	print="$print \\n\\n"
 	print_textart "$TEXTART_INFO" "$(( ( $TERM_WIDTH - $INFO_WIDTH ) / 2 ))"
 
-	[ "$modul_color" = 'possible' ] && [ -n "$TEXTART_COLOR" ] && {
+	[ "$MODUL_COLOR" = 'possible' ] && [ -n "$TEXTART_COLOR" ] && {
 		print="$print \\n\\n"
 		print_textart "$TEXTART_COLOR" "$(( ( $TERM_WIDTH - $COLOR_WIDTH ) / 2 ))"
 	}
@@ -117,29 +125,34 @@ fetch_flag() {
 
 # Start
 if [ "$TERM_WIDTH" -ge $(( $INFO_WIDTH + $SEPARATOR + $ART_WIDTH )) ] && [ "$TERM_HEIGHT" -ge $(( $INFO_HEIGHT + 1 + $ART_HEIGHT + 1 + $COLOR_HEIGHT + $PROMPT_HEIGHT )) ]; then
-	modul_art='possible'
-	modul_color='possible'
+	MODUL_ART='possible'
+	MODUL_COLOR='possible'
 
-	[ "$CLASSIC_MODE" = 'true' ] && fetch_classic || fetch_flag
+	[ "$CLASSIC_MODE" = 'true' ] && fetch_classic || fetch_paper
 elif [ ! "$TERM_WIDTH" -ge $(( $INFO_WIDTH + $SEPARATOR + $ART_WIDTH )) ]; then
 	if [ "$TERM_HEIGHT" -ge $(( $INFO_HEIGHT + 1 + $ART_HEIGHT + 1 + $COLOR_HEIGHT + $PROMPT_HEIGHT )) ]; then
-		modul_art='possible'
-		modul_color='possible'
+		MODUL_ART='possible'
+		MODUL_COLOR='possible'
 	elif [ "$TERM_HEIGHT" -ge $(( $INFO_HEIGHT + 1 + $ART_HEIGHT + $PROMPT_HEIGHT )) ]; then
-		modul_art='possible'
+		MODUL_ART='possible'
 	elif [ "$TERM_HEIGHT" -ge $(( $INFO_HEIGHT + 1 + $COLOR_HEIGHT + $PROMPT_HEIGHT )) ]; then
-		modul_color='possible'
+		MODUL_COLOR='possible'
 	fi
 
-	fetch_flag
+	fetch_paper
 else
-	[ "$TERM_HEIGHT" -ge $(( $INFO_HEIGHT + 1 + $ART_HEIGHT   + $PROMPT_HEIGHT )) ] && modul_art='possible'
-	[ "$TERM_HEIGHT" -ge $(( $INFO_HEIGHT + 1 + $COLOR_HEIGHT + $PROMPT_HEIGHT )) ] && modul_color='possible'
+	[ "$TERM_HEIGHT" -ge $(( $INFO_HEIGHT + 1 + $ART_HEIGHT + $PROMPT_HEIGHT )) ] && MODUL_ART='possible'
+	[ "$TERM_HEIGHT" -ge $(( $INFO_HEIGHT + 1 + $COLOR_HEIGHT + $PROMPT_HEIGHT )) ] && MODUL_COLOR='possible'
 
 	fetch_classic
 fi
 
-printf "\033[?25l\033[?7l\033[0m$print\033[?25h\033[?7h"
+printf "\033[?25l\033[?7l\033[0m$print\033[?25h\033[?7h\n"
+
+for element in INFO ART COLOR; do
+	eval "export BFETCH_${element}_HEIGHT=''"
+	eval "export BFETCH_${element}_WIDTH=''"
+done
 
 
 exit 0
