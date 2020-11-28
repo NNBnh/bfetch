@@ -17,7 +17,7 @@
 **Bfetch** is a *SuperB* general-purpose fetching tool written in [`pure sh`](https://github.com/dylanaraps/pure-sh-bible) that take user commands output and change how it display dynamic with the terminal size.
 
 ### Features
-- Super **minimum** with less than [**256** lines of `sh`](bfetch#L256).
+- Super **minimum** with less than [**256** lines of `sh`](bfetch#L256) and [**no dependencies**](#dependencies) (if you don't count `sh`).
 - Super **flexible**:
   - **Align/shift/change mode** contents based on terminal size.
   - **Hide** some elements if terminal is too small.
@@ -51,7 +51,6 @@
 ## Setup
 ### Dependencies
 - `sh` to process
-- `awk` to read command's putput
 
 ### Installation
 #### Manually
@@ -84,9 +83,11 @@ Bfetch is configured through environment variables: `export BFETCH_<SETTING>="<v
 
 |Value|Invalid|Default|Description|
 |-|-|-|-|
-|`BFETCH_INFO`|`<commands>`|`$XDG_CONFIG_HOME/bfetch/info` (`~/.config/bfetch/info`)|Read this commands output as infomation element (infomation)|
+|`BFETCH_INFO`|`<commands>`|`$XDG_CONFIG_HOME/bfetch/info` (`~/.config/bfetch/info`)|Read this commands output as infomation element (infomations)|
 |`BFETCH_ART`|`<commands>`|`$XDG_CONFIG_HOME/bfetch/art` (`~/.config/bfetch/art`)|Read this commands output as art element (operating system logo)|
 |`BFETCH_COLOR`|`<commands>`|`$XDG_CONFIG_HOME/bfetch/color` (`~/.config/bfetch/color`)|Read this commands output as color element (colors strip below info)|
+|||||
+|`BFETCH_CACHE`|`<path/to/file>`|`$XDG_CACHE_HOME/bfetch` (`~/.cache/bfetch`)|Cache's location|
 |||||
 |`BFETCH_CLASSIC_MODE`|`true\|false`|`false`|Make Bfetch prefer classic mode when both mode are possible|
 |`BFETCH_ART_RIGHT`|`true\|false`|`false`|Render art on the right when using classic mode|
