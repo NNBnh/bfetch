@@ -17,7 +17,7 @@
 **Bfetch** is a *SuperB* general-purpose fetching tool written in [`pure sh`](https://github.com/dylanaraps/pure-sh-bible) that take user commands output and change how it display dynamic with the terminal size.
 
 ### Features
-- Super **minimum** with less than [**256** lines of `sh`](bfetch#L256) and [**no dependencies**](#dependencies) (if you don't count `sh`).
+- Super **minimum** with exactly than [**256** lines of `sh`](bfetch#L256) and [**no dependencies**](#dependencies) (if you don't count `sh`).
 - Super **flexible**:
   - **Align/shift/change mode** contents based on terminal size.
   - **Hide** some elements if terminal is too small.
