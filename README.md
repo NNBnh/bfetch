@@ -101,7 +101,7 @@ Bfetch looking for and execute `$XDG_CONFIG_HOME/bfetch/info` for info element a
 ###### [Learn about `.textart` here](https://github.com/NNBnh/textart-collections/wiki)
 
 ### Art element and color element
-For art element and color element, take a look at [NNB's textart collections](https://github.com/NNBnh/textart-collections) and [other txetart resources](https://github.com/NNBnh/textart-collections#resources).
+For art element and color element, take a look at [NNB's textart collections](https://github.com/NNBnh/textart-collections) and [other textart resources](https://github.com/NNBnh/textart-collections#resources).
 
 ## Credit
 Special thanks to:
