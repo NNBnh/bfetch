@@ -71,9 +71,9 @@ bfetch_logo() {
 /_____/_/ \\\\__/\\\\__/\\\\__/_//_/\""
 }
 
-[ -f "$XDG_CONFIG_HOME/bfetch/info"  ] && INFO_COMMANDS="${BFETCH_INFO:-$XDG_CONFIG_HOME/bfetch/info}"    || INFO_COMMANDS="$BFETCH_INFO"
-[ -f "$XDG_CONFIG_HOME/bfetch/art"   ] && ART_COMMANDS="${BFETCH_ART:-$XDG_CONFIG_HOME/bfetch/art}"       || ART_COMMANDS="$BFETCH_ART"
-[ -f "$XDG_CONFIG_HOME/bfetch/color" ] && COLOR_COMMANDS="${BFETCH_COLOR:-$XDG_CONFIG_HOME/bfetch/color}" || COLOR_COMMANDS="$BFETCH_COLOR"
+[ -f "$XDG_CONFIG_HOME/bfetch/info"  ] && INFO_COMMANDS="${BFETCH_INFO-$XDG_CONFIG_HOME/bfetch/info}"    || INFO_COMMANDS="$BFETCH_INFO"
+[ -f "$XDG_CONFIG_HOME/bfetch/art"   ] && ART_COMMANDS="${BFETCH_ART-$XDG_CONFIG_HOME/bfetch/art}"       || ART_COMMANDS="$BFETCH_ART"
+[ -f "$XDG_CONFIG_HOME/bfetch/color" ] && COLOR_COMMANDS="${BFETCH_COLOR-$XDG_CONFIG_HOME/bfetch/color}" || COLOR_COMMANDS="$BFETCH_COLOR"
 
 CACHE="${BFETCH_CACHE-$XDG_CACHE_HOME/bfetch}"
 
@@ -86,7 +86,7 @@ PROMPT_HEIGHT="${BFETCH_PROMPT_HEIGHT:-1}"
 if [ -n "$1" ]; then
 	bfetch_help
 	bfetch_logo
-elif [ -z "$BFETCH_INFO" ]; then
+elif [ -z "$INFO_COMMANDS" ]; then
 	bfetch_help 'Info element commands is not found'
 	bfetch_logo
 elif [ ! "$PADDING" -ge '0' ]; then
