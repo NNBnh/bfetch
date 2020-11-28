@@ -114,7 +114,7 @@ for element in INFO ART COLOR; do
 	eval "[ -n \"\$${element}_COMMANDS\" ]" && {
 		eval "TEXTART_$element=\$(script --quiet /dev/null --command \"\$${element}_COMMANDS\")"
 
-		eval "printf '%s' \"\$TEXTART_$element\" | sed -e 's/\x1B\[[0-9;]*[JKmsu]//g' -e 's/ /-/g'" > "$CACHE"
+		eval "printf '%s' \"\$TEXTART_$element\" | sed -e 's/\x1B\[[0-9;]*[JKmsu]//g' -e 's/./-/g'" > "$CACHE"
 		height='0'
 		width='0'
 
