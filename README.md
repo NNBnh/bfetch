@@ -10,7 +10,7 @@
 </div>
 
 <p align="center">Dynamic fetching tool that <i>SuperB</i></p>
-<p align="center"><img src="https://img.shields.io/github/license/NNBnh/bfetch?labelColor=181818&color=DC9656&style=for-the-badge" alt="License: GPL-3.0"> <img src="https://img.shields.io/github/languages/top/NNBnh/bfetch?logo=gnu-bash&labelColor=181818&color=DC9656&logoColor=FFFFFF&style=for-the-badge" alt="Shell: 100%"> <img src="https://img.shields.io/badge/curl-able-%23DC9656.svg?labelColor=181818&style=for-the-badge&logo=curl&logoColor=FFFFFF" alt="Curlable"> <img src="https://img.shields.io/github/last-commit/NNBnh/bfetch?labelColor=181818&color=DC9656&style=for-the-badge"></p>
+<p align="center"><img src="https://img.shields.io/github/license/NNBnh/bfetch?labelColor=181818&color=DC9656&style=for-the-badge" alt="License: GPL-3.0"> <img src="https://img.shields.io/github/languages/top/NNBnh/bfetch?logo=gnu-bash&labelColor=181818&color=DC9656&logoColor=FFFFFF&style=for-the-badge" alt="Shell: 100%"> <img src="https://img.shields.io/github/last-commit/NNBnh/bfetch?labelColor=181818&color=DC9656&style=for-the-badge"></p>
 <p align="center"><img src="https://img.shields.io/github/watchers/NNBnh/bfetch?labelColor=181818&color=DC9656&style=flat-square"> <img src="https://img.shields.io/github/stars/NNBnh/bfetch?labelColor=181818&color=DC9656&style=flat-square"> <img src="https://img.shields.io/github/forks/NNBnh/bfetch?labelColor=181818&color=DC9656&style=flat-square"> <img src="https://img.shields.io/github/issues/NNBnh/bfetch?labelColor=181818&color=DC9656&style=flat-square"></p>
 
 ## About
