@@ -31,6 +31,35 @@
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
 XDG_CACHE_HOME="${XDG_CACHE_HOME:-$HOME/.cache}"
 
+if [ -f "$XDG_CONFIG_HOME/bfetch/info"  ]; then INFO_COMMANDS="${BFETCH_INFO-$XDG_CONFIG_HOME/bfetch/info}"   ; else INFO_COMMANDS="$BFETCH_INFO"  ; fi
+if [ -f "$XDG_CONFIG_HOME/bfetch/art"   ]; then ART_COMMANDS="${BFETCH_ART-$XDG_CONFIG_HOME/bfetch/art}"      ; else ART_COMMANDS="$BFETCH_ART"    ; fi
+if [ -f "$XDG_CONFIG_HOME/bfetch/color" ]; then COLOR_COMMANDS="${BFETCH_COLOR-$XDG_CONFIG_HOME/bfetch/color}"; else COLOR_COMMANDS="$BFETCH_COLOR"; fi
+
+CACHE="${BFETCH_CACHE-$XDG_CACHE_HOME/bfetch}"
+
+CLASSIC_MODE="${BFETCH_CLASSIC_MODE:-false}"
+CLASSIC_ART_RIGHT="${BFETCH_ART_RIGHT:-false}"
+PADDING="${BFETCH_PADDING:-1}"
+SEPARATOR="${BFETCH_SEPARATOR:-2}"
+PROMPT_HEIGHT="${BFETCH_PROMPT_HEIGHT:-1}"
+
+TERM_SIZE=$(stty size)
+TERM_HEIGHT="${TERM_SIZE% *}"
+TERM_WIDTH="${TERM_SIZE#* }"
+
+if [ "$CLASSIC_ART_RIGHT" = 'true' ]; then
+	order='info_color art'
+else
+	order='art info_color'
+fi
+
+for element in INFO ART COLOR; do
+	eval "${element}_HEIGHT='0'"
+	eval "${element}_WIDTH='0'"
+done
+
+
+# Functions
 bfetch_help() {
 	INFO_COMMANDS="printf \"${1:+Bfetch: $1\n\n\n} Bfetch is a SuperB general-purpose fetching tool
 written in pure sh that take user commands output
@@ -51,7 +80,7 @@ BFETCH_COLOR=\\\"<commands>\\\"
 BFETCH_CACHE=\\\"<path/to/file>\\\"
     Cache's location.
 BFETCH_CLASSIC_MODE=\\\"[true|false]\\\"
-    Make Bfetch prefer classic mode when both mode are possible.
+    Make Bfetch prefer classic mode when both mode are true.
 BFETCH_ART_RIGHT=\\\"[true|false]\\\"
     Render art on the right when using classic mode.
 BFETCH_PADDING=\\\"0+\\\"
@@ -71,18 +100,62 @@ bfetch_logo() {
 /_____/_/ \\\\__/\\\\__/\\\\__/_//_/\""
 }
 
-[ -f "$XDG_CONFIG_HOME/bfetch/info"  ] && INFO_COMMANDS="${BFETCH_INFO-$XDG_CONFIG_HOME/bfetch/info}"    || INFO_COMMANDS="$BFETCH_INFO"
-[ -f "$XDG_CONFIG_HOME/bfetch/art"   ] && ART_COMMANDS="${BFETCH_ART-$XDG_CONFIG_HOME/bfetch/art}"       || ART_COMMANDS="$BFETCH_ART"
-[ -f "$XDG_CONFIG_HOME/bfetch/color" ] && COLOR_COMMANDS="${BFETCH_COLOR-$XDG_CONFIG_HOME/bfetch/color}" || COLOR_COMMANDS="$BFETCH_COLOR"
+print_textart() {
+	element_padded=$(printf '%s' "$1" | sed -e "s/^/${2:+\\\\033[${2}C}/g" -e 's/%/%%/g')
 
-CACHE="${BFETCH_CACHE-$XDG_CACHE_HOME/bfetch}"
+	print="$print\\033[0m$element_padded"
+}
 
-CLASSIC_MODE="${BFETCH_CLASSIC_MODE:-false}"
-CLASSIC_ART_RIGHT="${BFETCH_ART_RIGHT:-false}"
-PADDING="${BFETCH_PADDING:-1}"
-SEPARATOR="${BFETCH_SEPARATOR:-2}"
-PROMPT_HEIGHT="${BFETCH_PROMPT_HEIGHT:-1}"
+fetch_classic() {
+	FETCH_PADDING=$(( fetch_padding_check < PADDING ? fetch_padding_check : PADDING ))
+	group_padding='0'
 
+	for group in $order; do
+		case $group in
+			'art')
+				[ "$reset" = 'true' ] && print="$print\\033[9999999D\\033[$(( group_height - 1 ))A"
+				print_textart "$TEXTART_ART" $(( FETCH_PADDING + group_padding ))
+
+				group_height="$ART_HEIGHT"
+				group_padding=$(( ART_WIDTH + SEPARATOR ))
+				reset='true'
+			;;
+			'info_color')
+				[ "$reset" = 'true' ] && print="$print\\033[9999999D\\033[$(( group_height - 1 ))A"
+				print_textart "$TEXTART_INFO" $(( FETCH_PADDING + group_padding ))
+				info_color_height="$INFO_HEIGHT"
+
+				[ "$modul_color" = 'true' ] && {
+					print="$print \\n\\n"
+					print_textart "$TEXTART_COLOR" $(( FETCH_PADDING + group_padding ))
+					info_color_height=$(( INFO_HEIGHT + 1 + COLOR_HEIGHT ))
+				}
+
+				group_height="$info_color_height"
+				group_padding=$(( ( ART_HEIGHT > INFO_HEIGHT ? INFO_COLOR_WIDTH : INFO_WIDTH ) + SEPARATOR ))
+				reset='true'
+			;;
+		esac
+	done
+
+	fetch_end=$(( ( ART_HEIGHT > info_color_height ? ART_HEIGHT : info_color_height ) - group_height ))
+	[ "$fetch_end" -gt '0' ] && print="$print\\033[${fetch_end}B"
+}
+
+fetch_paper() {
+	[ "$modul_art" = 'true' ] && print_textart "$TEXTART_ART" $(( ( TERM_WIDTH - ART_WIDTH ) / 2 ))
+
+	print="$print \\n\\n"
+	print_textart "$TEXTART_INFO" $(( ( TERM_WIDTH - INFO_WIDTH ) / 2 ))
+
+	[ "$modul_color" = 'true' ] && {
+		print="$print \\n\\n"
+		print_textart "$TEXTART_COLOR" $(( ( TERM_WIDTH - COLOR_WIDTH ) / 2 ))
+	}
+}
+
+
+# Start
 if [ -n "$1" ]; then
 	bfetch_help
 	bfetch_logo
@@ -103,15 +176,17 @@ elif [ ! "$PROMPT_HEIGHT" -ge '0' ]; then
 	bfetch_logo
 fi
 
-TERM_SIZE=$(stty size)
-TERM_HEIGHT="${TERM_SIZE% *}"
-TERM_WIDTH="${TERM_SIZE#* }"
+used_height="$PROMPT_HEIGHT"
+used_width='0'
 
 for element in INFO ART COLOR; do
-	eval "${element}_HEIGHT='0'"
-	eval "${element}_WIDTH='0'"
-
 	eval "[ -n \"\$${element}_COMMANDS\" ]" && {
+		eval "export BFETCH_${element}_HEIGHT=\$(( TERM_HEIGHT - used_height ))"
+		eval "export BFETCH_${element}_WIDTH=\$(( TERM_WIDTH - used_width ))"
+
+		modul_art='false'
+		modul_color='false'
+
 		eval "TEXTART_$element=\$(script --quiet /dev/null --command \"\$${element}_COMMANDS\")"
 
 		eval "printf '%s' \"\$TEXTART_$element\" | sed -e 's/\x1B\[[0-9;]*[JKmsu]//g' -e 's/./-/g'" > "$CACHE"
@@ -119,138 +194,63 @@ for element in INFO ART COLOR; do
 		width='0'
 
 		while IFS= read -r line || [ -n "$line" ]; do
-			height=$(( height + 1 ))
-			[ "${#line}" -gt "$width" ] && width="${#line}"
+			eval "${element}_HEIGHT=\$(( ${element}_HEIGHT + 1 ))"
+			eval "${element}_WIDTH=\$(( ( \${#line} - 1 ) > ${element}_WIDTH ? ( \${#line} - 1 ) : ${element}_WIDTH ))"
 		done < "$CACHE"
 
-		eval "${element}_HEIGHT=\"\$height\""
-		eval "${element}_WIDTH=\"\$width\""
+		INFO_COLOR_WIDTH=$(( INFO_WIDTH > COLOR_WIDTH ? INFO_WIDTH : COLOR_WIDTH ))
 
-		eval "export BFETCH_${element}_HEIGHT=\"\$${element}_HEIGHT\""
-		eval "export BFETCH_${element}_WIDTH=\"\$${element}_WIDTH\""
+		if [ "$TERM_HEIGHT" -ge $(( INFO_HEIGHT + 1 + ART_HEIGHT + 1 + COLOR_HEIGHT + PROMPT_HEIGHT )) ] && [ "$TERM_WIDTH" -ge $(( INFO_WIDTH + SEPARATOR + ART_WIDTH )) ]; then
+			[ -n "$ART_COMMANDS"   ] && modul_art='true'
+			[ -n "$COLOR_COMMANDS" ] && modul_color='true'
+
+			if [ "$CLASSIC_MODE" = 'true' ]; then
+				mode='classic'
+			else
+				mode='paper'
+			fi
+		elif [ "$TERM_HEIGHT" -ge $(( ART_HEIGHT + PROMPT_HEIGHT )) ] && [ "$TERM_WIDTH" -ge $(( ( ART_HEIGHT > INFO_HEIGHT ? INFO_COLOR_WIDTH : INFO_WIDTH ) + SEPARATOR + ART_WIDTH )) ] && [ -n "$ART_COMMANDS" ]; then
+			modul_art='true'
+
+			fetch_padding_check=$(( TERM_WIDTH - ( ART_WIDTH + ( ART_HEIGHT > INFO_HEIGHT ? INFO_COLOR_WIDTH : INFO_WIDTH ) + SEPARATOR ) ))
+
+			[ "$TERM_HEIGHT" -ge $(( INFO_HEIGHT + 1 + COLOR_HEIGHT + PROMPT_HEIGHT )) ] && [ -n "$COLOR_COMMANDS" ] && modul_color='true'
+
+			mode='classic'
+		else
+			if [ "$TERM_HEIGHT" -ge $(( INFO_HEIGHT + 1 + ART_HEIGHT + 1 + COLOR_HEIGHT + PROMPT_HEIGHT )) ] && [ -n "$ART_COMMANDS" ] && [ -n "$COLOR_COMMANDS" ]; then
+				modul_art='true'
+				modul_color='true'
+			elif [ "$TERM_HEIGHT" -ge $(( INFO_HEIGHT + 1 + ART_HEIGHT + PROMPT_HEIGHT )) ] && [ -n "$ART_COMMANDS" ]; then
+				modul_art='true'
+			elif [ "$TERM_HEIGHT" -ge $(( INFO_HEIGHT + 1 + COLOR_HEIGHT + PROMPT_HEIGHT )) ] && [ -n "$COLOR_COMMANDS" ]; then
+				modul_color='true'
+			fi
+
+			mode='paper'
+		fi
+
+		eval "export BFETCH_${element}_HEIGHT=''"
+		eval "export BFETCH_${element}_WIDTH=''"
+
+		case $element in
+			'INFO')
+				[ "$mode" = 'classic' ] && used_width=$(( used_width + INFO_WIDTH + SEPARATOR ))
+				[ "$mode" = 'paper' ] && used_height=$(( used_height + INFO_HEIGHT + 1 ))
+			;;
+			'ART')
+				[ "$mode" = 'classic' ] && used_height=$(( used_height + INFO_HEIGHT  + 1 ))
+				[ "$mode" = 'classic' ] && [ "$CLASSIC_ART_RIGHT" = 'true' ] && used_width='0'
+				[ "$mode" = 'paper' ] && used_height=$(( used_height + ART_HEIGHT + 1 ))
+			;;
+		esac
 	}
 done
 
-
-# Functions
-print_textart() {
-	element_padded=$(printf '%s' "$1" | sed -e "s/^/${2:+\\\\033[${2}C}/g" -e 's/%/%%/g')
-
-	print="$print\\033[0m$element_padded"
-}
-
-fetch_classic() {
-	[ "$CLASSIC_ART_RIGHT" = 'true' ] && order='info_color reset art' || order='art reset info_color'
-	[ "$MODUL_COLOR" = 'possible' ] && [ -n "$TEXTART_COLOR" ] && [ "$COLOR_WIDTH" -gt "$INFO_WIDTH" ] && [ "$INFO_HEIGHT" -lt "$ART_HEIGHT" ] && INFO_COLOR_WIDTH="$COLOR_WIDTH" || INFO_COLOR_WIDTH="$INFO_WIDTH"
-	fetch_padding_check=$(( TERM_WIDTH - ( ART_WIDTH + INFO_COLOR_WIDTH + SEPARATOR ) ))
-	FETCH_PADDING=$(( fetch_padding_check < PADDING ? fetch_padding_check : PADDING ))
-	group_padding='0'
-
-	for group in $order; do
-		case $group in
-			'art')
-				print_textart "$TEXTART_ART" "$(( FETCH_PADDING + group_padding ))"
-
-				group_height="$ART_HEIGHT"
-				group_padding=$(( ART_WIDTH + SEPARATOR ))
-			;;
-			'info_color')
-				print_textart "$TEXTART_INFO" "$(( FETCH_PADDING + group_padding ))"
-				info_color_height="$INFO_HEIGHT"
-
-				[ "$MODUL_COLOR" = 'possible' ] && [ -n "$TEXTART_COLOR" ] && {
-					print="$print \\n\\n"
-					print_textart "$TEXTART_COLOR" "$(( FETCH_PADDING + group_padding ))"
-					info_color_height=$(( INFO_HEIGHT + 1 + COLOR_HEIGHT ))
-				}
-
-				group_height="$info_color_height"
-				[ "$INFO_HEIGHT" -lt "$ART_HEIGHT" ] && group_padding=$(( INFO_COLOR_WIDTH + SEPARATOR ))
-			;;
-			'reset')
-				print="$print\\033[9999999D\\033[$(( group_height - 1 ))A"
-			;;
-		esac
-	done
-
-	fetch_end=$(( ( ART_HEIGHT > info_color_height ? ART_HEIGHT : info_color_height ) - group_height ))
-	[ "$fetch_end" -gt '0' ] && print="$print\\033[${fetch_end}B"
-}
-
-fetch_paper() {
-	[ "$MODUL_ART" = 'possible' ] && [ -n "$TEXTART_ART" ] && print_textart "$TEXTART_ART" "$(( ( TERM_WIDTH - ART_WIDTH ) / 2 ))"
-
-	print="$print \\n\\n"
-	print_textart "$TEXTART_INFO" "$(( ( TERM_WIDTH - INFO_WIDTH ) / 2 ))"
-
-	[ "$MODUL_COLOR" = 'possible' ] && [ -n "$TEXTART_COLOR" ] && {
-		print="$print \\n\\n"
-		print_textart "$TEXTART_COLOR" "$(( ( TERM_WIDTH - COLOR_WIDTH ) / 2 ))"
-	}
-}
-
-
-# Start
-if [ "$TERM_WIDTH" -ge $(( INFO_WIDTH + SEPARATOR + ART_WIDTH )) ] && [ "$TERM_HEIGHT" -ge $(( INFO_HEIGHT + 1 + ART_HEIGHT + 1 + COLOR_HEIGHT + PROMPT_HEIGHT )) ]; then
-	MODUL_ART='possible'
-	MODUL_COLOR='possible'
-
-	if [ "$CLASSIC_MODE" = 'true' ]; then
-		fetch_classic
-	else
-		fetch_paper
-	fi
-elif [ ! "$TERM_WIDTH" -ge $(( INFO_WIDTH + SEPARATOR + ART_WIDTH )) ]; then
-	if [ "$TERM_HEIGHT" -ge $(( INFO_HEIGHT + 1 + ART_HEIGHT + 1 + COLOR_HEIGHT + PROMPT_HEIGHT )) ]; then
-		MODUL_ART='possible'
-		MODUL_COLOR='possible'
-	elif [ "$TERM_HEIGHT" -ge $(( INFO_HEIGHT + 1 + ART_HEIGHT + PROMPT_HEIGHT )) ]; then
-		MODUL_ART='possible'
-	elif [ "$TERM_HEIGHT" -ge $(( INFO_HEIGHT + 1 + COLOR_HEIGHT + PROMPT_HEIGHT )) ]; then
-		MODUL_COLOR='possible'
-	fi
-
-	fetch_paper
-else
-	[ "$TERM_HEIGHT" -ge $(( INFO_HEIGHT + 1 + ART_HEIGHT + PROMPT_HEIGHT )) ] && MODUL_ART='possible'
-	[ "$TERM_HEIGHT" -ge $(( INFO_HEIGHT + 1 + COLOR_HEIGHT + PROMPT_HEIGHT )) ] && MODUL_COLOR='possible'
-
-	fetch_classic
-fi
+[ "$mode" = 'classic' ] && fetch_classic
+[ "$mode" = 'paper'   ] && fetch_paper
 
 printf "\033[?25l\033[?7l\033[0m$print\033[?25h\033[?7h\n"
 
-for element in INFO ART COLOR; do
-	eval "export BFETCH_${element}_HEIGHT=''"
-	eval "export BFETCH_${element}_WIDTH=''"
-done
 
-
-exit 0
-
-
-#
-# @@@@@@@@  @@@  @@@   @@@@@@    @@@@@@@  @@@@@@@  @@@       @@@ @@@
-# @@@@@@@@  @@@  @@@  @@@@@@@@  @@@@@@@@  @@@@@@@  @@@       @@@ @@@
-# @@!       @@!  !@@  @@!  @@@  !@@         @@!    @@!       @@! !@@
-# !@!       !@!  @!!  !@!  @!@  !@!         !@!    !@!       !@! @!!
-# @!!!:!     !@@!@!   @!@!@!@!  !@!         @!!    @!!        !@!@!
-# !!!!!:      @!!!    !!!@!!!!  !!!         !!!    !!!         @!!!
-# !!:        !: :!!   !!:  !!!  :!!         !!:    !!:         !!:
-# :!:       :!:  !:!  :!:  !:!  :!:         :!:     :!:        :!:
-#  :: ::::   ::  :::  ::   :::   ::: :::     ::     :: ::::     ::
-# : :: ::    :   ::    :   : :   :: :: :     :     : :: : :     :
-#
-#  @@@@@@   @@@@@@@    @@@@@@     @@@       @@@  @@@  @@@  @@@@@@@@   @@@@@@
-# @@@@@@@@  @@@@@@@   @@@@@@@     @@@       @@@  @@@@ @@@  @@@@@@@@  @@@@@@@
-#      @@@  !@@      !@@          @@!       @@!  @@!@!@@@  @@!       !@@
-#     @!@   !@!      !@!          !@!       !@!  !@!!@!@!  !@!       !@!
-#    !!@    !!@@!!   !!@@!@!      @!!       !!@  @!@ !!@!  @!!!:!    !!@@!!
-#   !!:     @!!@!!!  @!!@!!!!     !!!       !!!  !@!  !!!  !!!!!:     !!@!!!
-#  !:!          !:!  !:!  !:!     !!:       !!:  !!:  !!!  !!:            !:!
-# :!:           !:!  :!:  !:!      :!:      :!:  :!:  !:!  :!:           !:!
-# :: :::::  :::: ::  :::: :::      :: ::::   ::   ::   ::   :: ::::  :::: ::
-# :: : :::  :: : :    :: : :      : :: : :  :    ::    :   : :: ::   :: : :
-#
-# Yes, this file is exactly 256 lines of code.
-#
+exit 0 # 256!!!
