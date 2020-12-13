@@ -16,6 +16,11 @@
 ## About
 **Bfetch** is a *SuperB* general-purpose fetching tool written in [`pure sh`](https://github.com/dylanaraps/pure-sh-bible) that take user commands output and change how it display dynamic with the terminal size.
 
+### Story
+As a Linux ricer, I kile to make [**Neofetch**](https://github.com/dylanaraps/neofetch) automatically run when the terminal start.
+This was fine until I switched to using the tiled window manager, the terminal is often too small leading the fetch to look messy, even with [**Pfetch**](https://github.com/dylanaraps/pfetch), the poblem could appear.
+This has led me to create **Bfetch**, a dynamic fetching tool with an customization spirit from [**Ufetch**](https://gitlab.com/jschx/ufetch).
+
 ### Features
 - Super **minimum** with exactly than [**256** lines of `sh`](bfetch#L256) and [**no dependencies**](#dependencies) (if you don't count `sh`).
 - Super **flexible**:
@@ -31,13 +36,10 @@
 |![Paper mode](image/paper-mode.png)|![Classic mode](image/classic-mode.png)|
 |This mode aims to look like a paper document title.|This layout emulate the look of other system information tool.|
 
-### Story
-`#TODO`
-
 ## Contents
 - [About](#about)
-  - [Features](#features)
   - [Story](#story)
+  - [Features](#features)
 - [Contents](#contents)
 - [Setup](#setup)
   - [Dependencies](#dependencies)
@@ -83,7 +85,7 @@ Bfetch is configured through environment variables: `export BFETCH_<SETTING>="<v
 
 |Value|Invalid|Default|Description|
 |-|-|-|-|
-|`BFETCH_INFO`|`<commands>`|`$XDG_CONFIG_HOME/bfetch/info` (`~/.config/bfetch/info`)|Read this commands output as infomation element (infomations)|
+|`BFETCH_INFO`|`<commands>`|`$XDG_CONFIG_HOME/bfetch/info` (`~/.config/bfetch/info`)|Read this commands output as infomation element (OS, WM, terminal, ...)|
 |`BFETCH_ART`|`<commands>`|`$XDG_CONFIG_HOME/bfetch/art` (`~/.config/bfetch/art`)|Read this commands output as art element (operating system logo)|
 |`BFETCH_COLOR`|`<commands>`|`$XDG_CONFIG_HOME/bfetch/color` (`~/.config/bfetch/color`)|Read this commands output as color element (colors strip below info)|
 |||||
@@ -94,6 +96,19 @@ Bfetch is configured through environment variables: `export BFETCH_<SETTING>="<v
 |`BFETCH_PADDING`|`0+`|`1`|Padding fetch when using classic mode|
 |`BFETCH_SEPARATOR`|`0+`|`2`|Separate info and art when using classic mode|
 |`BFETCH_PROMPT_HEIGHT`|`0+`|`1`|Acknowledge how high the shell prompt is and counter it so the prompt don't push the fetch out|
+
+Bfetch will export the maximum size that an element can get:
+
+|Value|Description|
+|-|-|
+|`BFETCH_INFO_HEIGHT`|Maximum height of infomation element|
+|`BFETCH_INFO_WIDTH`|Maximum width of infomation element|
+|`BFETCH_ART_HEIGHT`|Maximum height of art element|
+|`BFETCH_ART_WIDTH`|Maximum width of art element|
+|`BFETCH_COLOR_HEIGHT`|Maximum height of color element|
+|`BFETCH_COLOR_WIDTH`|Maximum width of color element|
+
+###### [Here is an example of a color element that can be resized based on it's maximum size](https://github.com/NNBnh/dots/blob/master/home/.config/bfetch/color)
 
 ### Info element
 Bfetch looking for and execute `$XDG_CONFIG_HOME/bfetch/info` for info element as default, you can copy [this info template](https://github.com/NNBnh/textart-collections/blob/main/fetch/info.textart) with [Fetchutils](https://github.com/lptstr/fetchutils) as a starting point and customizing.
