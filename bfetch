@@ -45,11 +45,7 @@ TERM_SIZE=$(stty size)
 TERM_HEIGHT="${TERM_SIZE% *}"
 TERM_WIDTH="${TERM_SIZE#* }"
 
-if [ "$CLASSIC_ART_RIGHT" = 'true' ]; then
-	order='info_color art'
-else
-	order='art info_color'
-fi
+if [ "$CLASSIC_ART_RIGHT" = 'true' ]; then order='info_color art'; else order='art info_color'; fi
 
 for element in INFO ART COLOR; do
 	eval "${element}_HEIGHT='0'"
@@ -115,7 +111,7 @@ fetch_classic() {
 				print_textart "$TEXTART_ART" $(( FETCH_PADDING + group_padding ))
 
 				group_height="$ART_HEIGHT"
-				group_padding=$(( ART_WIDTH + SEPARATOR ))
+				group_padding=$(( ART_WIDTH + 1 + SEPARATOR ))
 				reset='true'
 			;;
 			'info_color')
@@ -130,7 +126,7 @@ fetch_classic() {
 				}
 
 				group_height="$info_color_height"
-				group_padding=$(( ( ART_HEIGHT > INFO_HEIGHT ? INFO_COLOR_WIDTH : INFO_WIDTH ) + SEPARATOR ))
+				group_padding=$(( ( ART_HEIGHT > INFO_HEIGHT ? INFO_COLOR_WIDTH : INFO_WIDTH ) + 1 + SEPARATOR ))
 				reset='true'
 			;;
 		esac
@@ -202,11 +198,7 @@ for element in INFO ART COLOR; do
 			[ -n "$ART_COMMANDS"   ] && modul_art='true'
 			[ -n "$COLOR_COMMANDS" ] && modul_color='true'
 
-			if [ "$CLASSIC_MODE" = 'true' ]; then
-				mode='classic'
-			else
-				mode='paper'
-			fi
+			if [ "$CLASSIC_MODE" = 'true' ]; then mode='classic'; else mode='paper'; fi
 		elif [ "$TERM_HEIGHT" -ge $(( ART_HEIGHT + PROMPT_HEIGHT )) ] && [ "$TERM_WIDTH" -ge $(( ( ART_HEIGHT > INFO_HEIGHT ? INFO_COLOR_WIDTH : INFO_WIDTH ) + SEPARATOR + ART_WIDTH )) ] && [ -n "$ART_COMMANDS" ]; then
 			modul_art='true'
 
@@ -233,15 +225,23 @@ for element in INFO ART COLOR; do
 
 		case $element in
 			'INFO')
-				[ "$mode" = 'classic' ] && used_width=$((INFO_WIDTH + SEPARATOR ))
-				[ "$mode" = 'paper' ] && used_height=$(( used_height + INFO_HEIGHT + 1 ))
+				if [ "$mode" = 'classic' ] || [ "$used_height" -ge "$TERM_HEIGHT" ]; then
+					used_width=$((INFO_WIDTH + SEPARATOR ))
+				else
+					used_height=$(( used_height + INFO_HEIGHT + 1 ))
+				fi
 			;;
 			'ART')
-				[ "$mode" = 'classic' ] && {
-					used_height=$(( used_height + INFO_HEIGHT  + 1 ))
-					[ "$CLASSIC_ART_RIGHT" = 'true' ] && [ "$ART_HEIGHT" -le "$INFO_HEIGHT" ] && used_width='0' || used_width=$(( ART_WIDTH + SEPARATOR ))
-				}
-				[ "$mode" = 'paper' ] && [ "$modul_art" = 'true' ] && used_height=$(( used_height + ART_HEIGHT + 1 ))
+				if [ "$mode" = 'classic' ] || [ "$used_height" -ge "$TERM_HEIGHT" ]; then
+					used_height=$(( PROMPT_HEIGHT + INFO_HEIGHT  + 1 ))
+					if [ "$CLASSIC_ART_RIGHT" = 'true' ] && [ "$ART_HEIGHT" -le "$INFO_HEIGHT" ]; then
+						used_width='0'
+					else
+						used_width=$(( ART_WIDTH + SEPARATOR ))
+					fi
+				else
+					[ "$modul_art" = 'true' ] && used_height=$(( used_height + ART_HEIGHT + 1 ))
+				fi
 			;;
 		esac
 	}
