@@ -16,10 +16,19 @@
 ## About
 **Bfetch** is a *SuperB* general-purpose fetching tool written in [`pure sh`](https://github.com/dylanaraps/pure-sh-bible) that take user commands output and change how it display dynamic with the terminal size.
 
+<a href="https://asciinema.org/a/379071" target="_blank"><img width="49%" src="https://asciinema.org/a/379071.svg"></a>
+<a href="https://asciinema.org/a/379073" target="_blank"><img width="49%" src="https://asciinema.org/a/379073.svg"></a>
+
+<p align="center"><a href="https://asciinema.org/a/379084" target="_blank"><img src="https://asciinema.org/a/379084.svg"></a></p>
+
 ### Story
 As a Linux ricer, I kile to make [**Neofetch**](https://github.com/dylanaraps/neofetch) automatically run when the terminal start.
 This was fine until I switched to using the tiled window manager, the terminal is often too small leading the fetch to look messy, even with [**Pfetch**](https://github.com/dylanaraps/pfetch), the poblem could appear.
 This has led me to create **Bfetch**, a dynamic fetching tool with an customization spirit from [**Ufetch**](https://gitlab.com/jschx/ufetch).
+
+|Other fetch|Bfetch|
+|-|-|
+|![Story other fetch](image/story/other.png)|![Story Bfetch](image/story/bfetch.png)|
 
 ### Features
 - Super **minimum** with exactly than [**256** lines of `sh`](bfetch#L256) and [**no dependencies**](#dependencies) (if you don't count `sh`).
@@ -125,3 +134,5 @@ Special thanks to:
 - [**Ufetch**](https://gitlab.com/jschx/ufetch) by [Jschx](https://gitlab.com/jschx)
 - [**Fetchutils**](https://github.com/lptstr/fetchutils) by [LPTSTR](https://github.com/lptstr)
 - [**Pure sh bible**](https://github.com/dylanaraps/pure-sh-bible) also by [Dylan](https://github.com/dylanaraps)
+
+###### This project did not take it's name from [**ZeroL00P's Bfetch**](https://github.com/Mati232411/bfetch) or [**Edoardo Zerbo's Bfetch**](https://gitlab.com/nautilor/bfetch). The "B" in Bfetch stands for "*SuperB*" like all my other project names: [Bawkpack](https://github.com/NNBnh/bawkpack), [BUI](https://github.com/NNBnh/bui.kak) ...
