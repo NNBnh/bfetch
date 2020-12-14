@@ -95,7 +95,7 @@ bfetch_logo() {
 }
 
 print_textart() {
-	element_padded=$(printf '%s' "$1" | sed -e "s/^/${2:+\\\\033[${2}C}/g" -e 's/%/%%/g')
+	element_padded=$(printf '%s' "$1" | sed -e "s/^/${2:+\\\\033[${2}C}/g" -e 's/%/%%/g' -e 's/\\\\/\\\\\\/g')
 
 	print="$print\\033[0m$element_padded"
 }
