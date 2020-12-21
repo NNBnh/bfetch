@@ -29,12 +29,13 @@
 
 # Values
 XDG_CONFIG_HOME="${XDG_CONFIG_HOME:-$HOME/.config}"
+TMPDIR="${TMPDIR:-/tmp}"
 
 if [ -f "$XDG_CONFIG_HOME/bfetch/info"  ]; then INFO_COMMANDS="${BFETCH_INFO-$XDG_CONFIG_HOME/bfetch/info}"   ; else INFO_COMMANDS="$BFETCH_INFO"  ; fi
 if [ -f "$XDG_CONFIG_HOME/bfetch/art"   ]; then ART_COMMANDS="${BFETCH_ART-$XDG_CONFIG_HOME/bfetch/art}"      ; else ART_COMMANDS="$BFETCH_ART"    ; fi
 if [ -f "$XDG_CONFIG_HOME/bfetch/color" ]; then COLOR_COMMANDS="${BFETCH_COLOR-$XDG_CONFIG_HOME/bfetch/color}"; else COLOR_COMMANDS="$BFETCH_COLOR"; fi
 
-TEMPORARY="${BFETCH_TEMPORARY-/tmp/bfetch}"
+TEMPORARY="${BFETCH_TEMPORARY-$TMPDIR/bfetch}"
 CLASSIC_MODE="${BFETCH_CLASSIC_MODE:-false}"
 CLASSIC_ART_RIGHT="${BFETCH_ART_RIGHT:-false}"
 PADDING="${BFETCH_PADDING:-1}"
