@@ -23,9 +23,7 @@ As a Linux ricer, I kile to make [**Neofetch**](https://github.com/dylanaraps/ne
 This was fine until I switched to using the tiled window manager, the terminal is often too small leading the fetch to look messy, even with [**Pfetch**](https://github.com/dylanaraps/pfetch), the poblem could appear.
 This has led me to create **Bfetch**, a dynamic fetching tool with an customization spirit from [**Ufetch**](https://gitlab.com/jschx/ufetch).
 
-|Other fetch|Bfetch|
-|-|-|
-|![Story other fetch](image/story/other.png)|![Story Bfetch](image/story/bfetch.png)|
+![Story](image/story.png)
 
 ### Features
 - Super **minimum** with exactly than [**256** lines of `sh`](bfetch#L256) and [**no dependencies**](#dependencies) (if you don't count `sh`).
@@ -40,7 +38,6 @@ This has led me to create **Bfetch**, a dynamic fetching tool with an customizat
 |Paper mode|Classic mode|
 |-|-|
 |![Paper mode](image/paper-mode.png)|![Classic mode](image/classic-mode.png)|
-|This mode aims to look like a paper document title.|This layout emulate the look of other system information tool.|
 
 ## Contents
 - [About](#about)
