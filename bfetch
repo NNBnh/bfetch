@@ -41,6 +41,7 @@ CLASSIC_ART_RIGHT="${BFETCH_ART_RIGHT:-false}"
 PADDING="${BFETCH_PADDING:-1}"
 SEPARATOR="${BFETCH_SEPARATOR:-2}"
 PROMPT_HEIGHT="${BFETCH_PROMPT_HEIGHT:-1}"
+
 TERM_SIZE=$(stty size)
 TERM_HEIGHT="${TERM_SIZE% *}"
 TERM_WIDTH="${TERM_SIZE#* }"
@@ -102,6 +103,7 @@ print_textart() {
 
 fetch_classic() {
 	FETCH_PADDING=$(( fetch_padding_check < PADDING ? fetch_padding_check : PADDING ))
+
 	group_padding='0'
 
 	for group in $order; do
@@ -181,6 +183,7 @@ for element in INFO ART COLOR; do
 		eval "TEXTART_$element=\$(script --quiet /dev/null --command \"\$${element}_COMMANDS\")"
 
 		eval "printf '%s' \"\$TEXTART_$element\" | sed -e 's/\x1B\[[0-9;]*[JKmsu]//g' -e 's/./-/g'" > "$TEMPORARY"
+
 		height='0'
 		width='0'
 
@@ -219,9 +222,6 @@ for element in INFO ART COLOR; do
 
 			mode='paper'
 		fi
-
-		eval "export BFETCH_${element}_HEIGHT=''"
-		eval "export BFETCH_${element}_WIDTH=''"
 
 		case $element in
 			'INFO')
