@@ -16,10 +16,7 @@
 ## About
 **Bfetch** is a *SuperB* general-purpose fetching tool written in [`pure sh`](https://github.com/dylanaraps/pure-sh-bible) that take user commands output and change how it display dynamic with the terminal size.
 
-<a href="https://asciinema.org/a/379071" target="_blank"><img width="49%" src="https://asciinema.org/a/379071.svg"></a>
-<a href="https://asciinema.org/a/379073" target="_blank"><img width="49%" src="https://asciinema.org/a/379073.svg"></a>
-
-<p align="center"><a href="https://asciinema.org/a/379084" target="_blank"><img src="https://asciinema.org/a/379084.svg"></a></p>
+<p align="center"><a href="https://asciinema.org/a/381349" target="_blank"><img src="https://asciinema.org/a/381349.svg"></a></p>
 
 ### Story
 As a Linux ricer, I kile to make [**Neofetch**](https://github.com/dylanaraps/neofetch) automatically run when the terminal start.
