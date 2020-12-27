@@ -20,10 +20,13 @@
 
 ### Story
 As a Linux ricer, I kile to make [**Neofetch**](https://github.com/dylanaraps/neofetch) automatically run when the terminal start.
-This was fine until I switched to using the tiled window manager, the terminal is often too small leading the fetch to look messy, even with [**Pfetch**](https://github.com/dylanaraps/pfetch), the poblem could appear.
+This was fine until I switched to using the tiled window manager, the terminal is often too small leading the fetch get crop off, even with [**Pfetch**](https://github.com/dylanaraps/pfetch), the poblem could appear.
 This has led me to create **Bfetch**, a dynamic fetching tool with an customization spirit from [**Ufetch**](https://gitlab.com/jschx/ufetch).
 
-![Story](image/story.png)
+| |[Neofetch](https://github.com/dylanaraps/neofetch)|[Pfetch](https://github.com/dylanaraps/pfetch)|
+|-|-|-|
+|**Other**|![Neofetch](image/neofetch.png)|![Pfetch](image/pfetch.png)|
+|**Bfetch**|![Bfetch](image/neofetch-bfetch.png)|![Bfetch](image/pfetch-bfetch.png)|
 
 ### Features
 - Super **minimum** with exactly than [**256** lines of `sh`](bfetch#L256) and [**no dependencies**](#dependencies) (if you don't count `sh`).
@@ -111,6 +114,8 @@ Bfetch will export the maximum size that an element can get:
 |`BFETCH_COLOR_HEIGHT`|Maximum height of color element|
 |`BFETCH_COLOR_WIDTH`|Maximum width of color element|
 
+###### This feature is still on testing...
+
 ###### [Here is an example of a color element that can be resized based on it's maximum size](https://github.com/NNBnh/dots/blob/master/home/.config/bfetch/color)
 
 ### Info element
@@ -129,4 +134,4 @@ Special thanks to:
 - [**Fetchutils**](https://github.com/lptstr/fetchutils) by [LPTSTR](https://github.com/lptstr)
 - [**Pure sh bible**](https://github.com/dylanaraps/pure-sh-bible) also by [Dylan](https://github.com/dylanaraps)
 
-###### This project did not take it's name from [**ZeroL00P's Bfetch**](https://github.com/Mati232411/bfetch) or [**Edoardo Zerbo's Bfetch**](https://gitlab.com/nautilor/bfetch). The "B" in Bfetch stands for "*SuperB*" like all my other project names: [Bawkpack](https://github.com/NNBnh/bawkpack), [BUI](https://github.com/NNBnh/bui.kak) ...
+###### This project did not take it's name from [**ZeroL00P's Bfetch**](https://github.com/Mati232411/bfetch) or [**Edoardo Zerbo's Bfetch**](https://gitlab.com/nautilor/bfetch). The "B" in Bfetch stands for "*SuperB*" like all my other project names: [Bawkpack](https://github.com/NNBnh/bawkpack), [BUI](https://github.com/NNBnh/bui.kak)...
