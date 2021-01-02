@@ -128,6 +128,7 @@ For art element and color element, take a look at [NNB's textart collections](ht
 
 ## Credit
 Special thanks to:
+- [**Julian Marcos**](https://github.com/Juliaria08) for porting this package to the [AUR]()
 - [**Neofetch**](https://github.com/dylanaraps/neofetch) by [Dylan](https://github.com/dylanaraps)
 - [**Pfetch**](https://github.com/dylanaraps/pfetch) also by [Dylan](https://github.com/dylanaraps)
 - [**Ufetch**](https://gitlab.com/jschx/ufetch) by [Jschx](https://gitlab.com/jschx)
