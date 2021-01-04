@@ -9,12 +9,12 @@
 </pre>
 </div>
 
-<p align="center">Dynamic fetching tool that <i>SuperB</i></p>
+<p align="center">Dynamic fetch displayer that <i>SuperB</i></p>
 <p align="center"><img src="https://img.shields.io/github/license/NNBnh/b.sh?labelColor=073551&color=4EAA25&style=for-the-badge" alt="License: GPL-3.0"> <img src="https://img.shields.io/github/languages/top/NNBnh/b.sh?logo=gnu-bash&labelColor=073551&color=4EAA25&logoColor=FFFFFF&style=for-the-badge" alt="Shell: 100%">  <img src="https://img.shields.io/github/last-commit/NNBnh/b.sh?labelColor=073551&color=4EAA25&style=for-the-badge"></p>
 <p align="center"><img src="https://img.shields.io/github/watchers/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=flat-square"> <img src="https://img.shields.io/github/stars/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=flat-square"> <img src="https://img.shields.io/github/forks/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=flat-square"> <img src="https://img.shields.io/github/issues/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=flat-square"></p>
 
 ## About
-**Bfetch** is a *SuperB* general-purpose fetching tool written in [`pure sh`](https://github.com/dylanaraps/pure-sh-bible) that take user commands output and change how it display dynamic with the terminal size.
+**Bfetch** is a *SuperB* general-purpose fetch displayer written in [`pure sh`](https://github.com/dylanaraps/pure-sh-bible) that take user commands output and change how it display dynamic with the terminal size.
 
 <p align="center"><a href="https://asciinema.org/a/381349" target="_blank"><img src="https://asciinema.org/a/381349.svg"></a></p>
 
