@@ -77,7 +77,13 @@ ln -s ~/.local/share/bfetch/bfetch ~/.local/bin/bfetch
 ```
 
 #### Package manager
-`#TODO`
+For [Arch-Linux base distro](https://archlinux.org), install [this AUR package](https://aur.archlinux.org/packages/superbfetch-git):
+
+```sh
+yay -Sy superbfetch-git
+```
+
+###### If you can and want to port Bfetch to other package managers, feel free to do so.
 
 ## Usage
 Run Bfetch in the terminal:
@@ -128,7 +134,7 @@ For art element and color element, take a look at [NNB's textart collections](ht
 
 ## Credit
 Special thanks to:
-- [**Julian Marcos**](https://github.com/Juliaria08) for porting this package to the [AUR]()
+- [**Julian Marcos**](https://github.com/Juliaria08) for porting this package to the [AUR](https://aur.archlinux.org/packages/superbfetch-git)
 - [**Neofetch**](https://github.com/dylanaraps/neofetch) by [Dylan](https://github.com/dylanaraps)
 - [**Pfetch**](https://github.com/dylanaraps/pfetch) also by [Dylan](https://github.com/dylanaraps)
 - [**Ufetch**](https://gitlab.com/jschx/ufetch) by [Jschx](https://gitlab.com/jschx)
