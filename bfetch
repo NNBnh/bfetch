@@ -7,7 +7,7 @@
 # /_____/_/ \__/\__/\__/_//_/
 
 # File:         bfetch
-# Description:  Dynamic fetching tool that SuperB
+# Description:  Dynamic fetch displayer that SuperB
 # Author:       NNB
 #               └─ https://github.com/NNBnh
 # URL:          https://github.com/NNBnh/bfetch
@@ -56,7 +56,7 @@ done
 
 # Functions
 bfetch_help() {
-	INFO_COMMANDS="printf \"${1:+Bfetch: $1\n\n\n} Bfetch is a SuperB general-purpose fetching tool
+	INFO_COMMANDS="printf \"${1:+Bfetch: $1\n\n\n} Bfetch is a SuperB general-purpose fetch displayer
 written in pure sh that take user commands output
 and change how it display dynamic with the terminal size.
 
