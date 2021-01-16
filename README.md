@@ -54,7 +54,7 @@ This has led me to create **Bfetch**, a dynamic fetching tool with an customizat
 - [Configuration](#configuration)
   - [Info element](#info-element)
   - [Art element and color element](#art-element-and-color-element)
-- [Credit](#credit)
+- [Credits](#credits)
 
 ## Setup
 ### Dependencies
@@ -132,7 +132,7 @@ Bfetch looking for and execute `$XDG_CONFIG_HOME/bfetch/info` for info element a
 ### Art element and color element
 For art element and color element, take a look at [NNB's textart collections](https://github.com/NNBnh/textart-collections) and [other textart resources](https://github.com/NNBnh/textart-collections#resources).
 
-## Credit
+## Credits
 Special thanks to:
 - [**Julian Marcos**](https://github.com/Juliaria08) for porting this package to the [AUR](https://aur.archlinux.org/packages/superbfetch-git)
 - [**Neofetch**](https://github.com/dylanaraps/neofetch) by [Dylan](https://github.com/dylanaraps)
