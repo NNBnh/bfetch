@@ -54,7 +54,7 @@ This has led me to create **Bfetch**, a dynamic fetching tool with an customizat
 - [Configuration](#configuration)
   - [Info element](#info-element)
   - [Art element and color element](#art-element-and-color-element)
-- [Credit](#credit)
+- [Credits](#credits)
 
 ## Setup
 ### Dependencies
@@ -77,7 +77,13 @@ ln -s ~/.local/share/bfetch/bfetch ~/.local/bin/bfetch
 ```
 
 #### Package manager
-`#TODO`
+For [Arch-Linux base distro](https://archlinux.org), install [this AUR package](https://aur.archlinux.org/packages/superbfetch-git):
+
+```sh
+yay -Sy superbfetch-git
+```
+
+###### If you can and want to port Bfetch to other package managers, feel free to do so.
 
 ## Usage
 Run Bfetch in the terminal:
@@ -124,9 +130,9 @@ Bfetch looking for and execute `$XDG_CONFIG_HOME/bfetch/info` for info element a
 ### Art element and color element
 For art element and color element, take a look at [NNB's textart collections](https://github.com/NNBnh/textart-collections) and [other textart resources](https://github.com/NNBnh/textart-collections#resources).
 
-## Credit
+## Credits
 Special thanks to:
-- [**Julian Marcos**](https://github.com/Juliaria08) for porting this package to the [AUR]()
+- [**Julian Marcos**](https://github.com/Juliaria08) for porting this package to the [AUR](https://aur.archlinux.org/packages/superbfetch-git)
 - [**Neofetch**](https://github.com/dylanaraps/neofetch) by [Dylan](https://github.com/dylanaraps)
 - [**Pfetch**](https://github.com/dylanaraps/pfetch) also by [Dylan](https://github.com/dylanaraps)
 - [**Ufetch**](https://gitlab.com/jschx/ufetch) by [Jschx](https://gitlab.com/jschx)
@@ -135,6 +141,10 @@ Special thanks to:
 
 ###### This project did not take it's name from [**ZeroL00P's Bfetch**](https://github.com/Mati232411/bfetch) or [**Edoardo Zerbo's Bfetch**](https://gitlab.com/nautilor/bfetch). The "B" in Bfetch stands for "*SuperB*" like all my other project names: [Bawkpack](https://github.com/NNBnh/bawkpack), [BUI](https://github.com/NNBnh/bui.kak)...
 
-> <h1 align="center">Made with ❤️ by <a href="https://github.com/NNBnh"><i>NNB</i></a></h1>
+<br><br><br><br>
+
+---
+
+> <h1 align="center">Made with :heart: by <a href="https://github.com/NNBnh"><i>NNB</i></a></h1>
 >
-> <p align="center"><a href="https://www.buymeacoffee.com/nnbnh"><img src="https://img.shields.io/badge/buy_me_a_coffee%20-%23F7CA88.svg?logo=buy-me-a-coffee&logoColor=333333&style=for-the-badge" alt="Buy Me a Snack (Buy Me a Coffee)"></p>
+> <p align="center"><a href="https://www.buymeacoffee.com/nnbnh"><img src="https://img.shields.io/badge/buy_me_a_coffee%20-%23F7CA88.svg?logo=buy-me-a-coffee&logoColor=333333&style=for-the-badge" alt="Buy Me a Coffee"></p>
