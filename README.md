@@ -114,8 +114,6 @@ Bfetch will export the maximum size that an element can get:
 |`BFETCH_COLOR_HEIGHT`|Maximum height of color element|
 |`BFETCH_COLOR_WIDTH`|Maximum width of color element|
 
-###### This feature is still on testing...
-
 ###### [Here is an example of a color element that can be resized based on it's maximum size](https://github.com/NNBnh/dots/blob/master/home/.config/bfetch/color)
 
 ### Info element
