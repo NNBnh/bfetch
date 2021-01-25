@@ -24,9 +24,9 @@ This was fine until I switched to using the tiled window manager, the terminal i
 This has led me to create **Bfetch**, a dynamic fetching tool with an customization spirit from [**Ufetch**](https://gitlab.com/jschx/ufetch).
 
 | |[Neofetch](https://github.com/dylanaraps/neofetch)|[Pfetch](https://github.com/dylanaraps/pfetch)|
-|-|-|-|
-|**Without Bfetch**|![Neofetch](image/neofetch.png)|![Pfetch](image/pfetch.png)|
-|**With Bfetch**|![Bfetch](image/neofetch-bfetch.png)|![Bfetch](image/pfetch-bfetch.png)|
+|:-:|-|-|
+|Without Bfetch|![Neofetch](image/neofetch.png)|![Pfetch](image/pfetch.png)|
+|With Bfetch|![Bfetch](image/neofetch-bfetch.png)|![Bfetch](image/pfetch-bfetch.png)|
 
 ### Features
 - Super **minimum** with exactly than [**256** lines of `sh`](bfetch#L256) and [**no dependencies**](#dependencies) (if you don't count `sh`).
