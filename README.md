@@ -25,8 +25,8 @@ This has led me to create **Bfetch**, a dynamic fetching tool with an customizat
 
 | |[Neofetch](https://github.com/dylanaraps/neofetch)|[Pfetch](https://github.com/dylanaraps/pfetch)|
 |-|-|-|
-|**Other**|![Neofetch](image/neofetch.png)|![Pfetch](image/pfetch.png)|
-|**Bfetch**|![Bfetch](image/neofetch-bfetch.png)|![Bfetch](image/pfetch-bfetch.png)|
+|**Without Bfetch**|![Neofetch](image/neofetch.png)|![Pfetch](image/pfetch.png)|
+|**With Bfetch**|![Bfetch](image/neofetch-bfetch.png)|![Bfetch](image/pfetch-bfetch.png)|
 
 ### Features
 - Super **minimum** with exactly than [**256** lines of `sh`](bfetch#L256) and [**no dependencies**](#dependencies) (if you don't count `sh`).
