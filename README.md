@@ -29,7 +29,7 @@ This has led me to create **Bfetch**, a dynamic fetching tool with an customizat
 |With Bfetch|![Bfetch](image/neofetch-bfetch.png)|![Bfetch](image/pfetch-bfetch.png)|
 
 ### Features
-- Super **minimum** with exactly than [**256** lines of `sh`](bfetch#L256) and [**no dependencies**](#dependencies) (if you don't count `sh`).
+- Super **minimum** with exactly [**256** lines of `sh`](bfetch#L256) and [**no dependencies**](#dependencies) (if you don't count `sh`).
 - Super **flexible**:
   - **Align/shift/change mode** contents based on terminal size.
   - **Hide** some elements if terminal is too small.
