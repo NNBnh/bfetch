@@ -33,7 +33,7 @@ This has led me to create **Bfetch**, a dynamic fetching tool with an customizat
 - Super **flexible**:
   - **Align/shift/change mode** contents based on terminal size.
   - **Hide** some elements if terminal is too small.
-- Super **Customizable**:
+- Super **customizable**:
   - Bfetch can **take commands output** and use it. By so, Bfetch can display **anything** you want, **however** you want.
   - And even more [**config options**](#configuration)
 - Have **two mode**:
