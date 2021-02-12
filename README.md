@@ -1,15 +1,4 @@
-<div align="center">
-<pre style="background: none !important; font-weight: bold !important;">
-    ____                   
-   / __ )___    __      __ 
-  / __  / _/__ / /_____/ / 
- / /_/ / _/ -_) __/ __/ _ \
-/_____/_/ \__/\__/\__/_//_/
-
-</pre>
-</div>
-
-<p align="center">Dynamic fetch displayer that <i>SuperB</i></p>
+<p align="center"><img width="100%" src="https://user-images.githubusercontent.com/43980777/107769286-5a11a980-6d6a-11eb-9d65-ed07bf79a5c0.png"></p>
 <p align="center"><img src="https://img.shields.io/github/license/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=for-the-badge" alt="License: GPL-3.0"> <img src="https://img.shields.io/github/languages/top/NNBnh/bfetch?logo=gnu-bash&labelColor=073551&color=4EAA25&logoColor=FFFFFF&style=for-the-badge" alt="Shell: 100%"> <img src="https://img.shields.io/badge/development-completed-%234EAA25.svg?labelColor=073551&style=for-the-badge&logoColor=FFFFFF" alt="Development completed"></p>
 <p align="center"><img src="https://img.shields.io/github/watchers/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=flat-square"> <img src="https://img.shields.io/github/stars/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=flat-square"> <img src="https://img.shields.io/github/forks/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=flat-square"> <img src="https://img.shields.io/github/issues/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=flat-square"></p>
 
