@@ -1,8 +1,7 @@
 {
-  "name": "bfetch",
+  "name": "superbfetch",
   "version": "1.0.1",
   "description": "Dynamic fetch displayer that SuperB",
   "global": "true",
-  "scripts": [ "bin/bfetch" ],
   "install": "make install"
 }
