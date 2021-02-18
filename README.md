@@ -3,19 +3,19 @@
 <p align="center"><img src="https://img.shields.io/github/watchers/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=flat-square"> <img src="https://img.shields.io/github/stars/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=flat-square"> <img src="https://img.shields.io/github/forks/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=flat-square"> <img src="https://img.shields.io/github/issues/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=flat-square"></p>
 
 ## About
-**Bfetch** is a *SuperB* general-purpose fetch displayer written in [`pure sh`](https://github.com/dylanaraps/pure-sh-bible) that take user commands output and change how it display dynamic with the terminal size.
+**SuperB Fetch** (a.k.a `bfetch`) is a *SuperB* general-purpose fetch displayer written in [`pure sh`](https://github.com/dylanaraps/pure-sh-bible) that take user commands output and change how it display dynamic with the terminal size.
 
 <p align="center"><a href="https://asciinema.org/a/381349" target="_blank"><img src="https://asciinema.org/a/381349.svg"></a></p>
 
 ### Story
 As a Linux ricer, I kile to make [**Neofetch**](https://github.com/dylanaraps/neofetch) automatically run when the terminal start.
 This was fine until I switched to using the tiled window manager, the terminal is often too small leading the fetch get crop off, even with [**Pfetch**](https://github.com/dylanaraps/pfetch), the poblem could appear.
-This has led me to create **Bfetch**, a dynamic fetching tool with an customization spirit from [**Ufetch**](https://gitlab.com/jschx/ufetch).
+This has led me to create **SuperB Fetch**, a dynamic fetching tool with an customization spirit from [**Ufetch**](https://gitlab.com/jschx/ufetch).
 
 | |[Neofetch](https://github.com/dylanaraps/neofetch)|[Pfetch](https://github.com/dylanaraps/pfetch)|
 |:-:|-|-|
-|Without Bfetch|![Neofetch](image/neofetch.png)|![Pfetch](image/pfetch.png)|
-|With Bfetch|![Bfetch](image/neofetch-bfetch.png)|![Bfetch](image/pfetch-bfetch.png)|
+|Without SuperB Fetch|![Neofetch](image/neofetch.png)|![Pfetch](image/pfetch.png)|
+|With SuperB Fetch|![Bfetch](image/neofetch-bfetch.png)|![Bfetch](image/pfetch-bfetch.png)|
 
 ### Features
 - Super **minimum** with exactly [**256** lines of `sh`](bfetch#L256) and [**no dependencies**](#dependencies) (if you don't count `sh`).
@@ -23,7 +23,7 @@ This has led me to create **Bfetch**, a dynamic fetching tool with an customizat
   - **Align/shift/change mode** contents based on terminal size.
   - **Hide** some elements if terminal is too small.
 - Super **customizable**:
-  - Bfetch can **take commands output** and use it. By so, Bfetch can display **anything** you want, **however** you want.
+  - SuperB Fetch can **take commands output** and use it. By so, SuperB Fetch can display **anything** you want, **however** you want.
   - And even more [**config options**](#configuration)
 - Have **two mode**:
 
@@ -62,7 +62,7 @@ chmod +x ~/.local/bin/bfetch
 
 ```sh
 git clone https://github.com/NNBnh/bfetch.git ~/.local/share/bfetch
-ln -s ~/.local/share/bfetch/bfetch ~/.local/bin/bfetch
+ln -s ~/.local/share/bfetch/bin/bfetch ~/.local/bin/bfetch
 ```
 
 #### Package manager
@@ -72,17 +72,17 @@ For [Arch-Linux base distro](https://archlinux.org), install [this AUR package](
 yay -Sy superbfetch-git
 ```
 
-###### If you can and want to port Bfetch to other package managers, feel free to do so.
+###### If you can and want to port SuperB Fetch to other package managers, feel free to do so.
 
 ## Usage
-Run Bfetch in the terminal:
+Run SuperB Fetch in the terminal:
 
 ```sh
 bfetch
 ```
 
 ## Configuration
-Bfetch is configured through environment variables: `export BFETCH_<SETTING>="<value>"`
+SuperB Fetch is configured through environment variables: `export BFETCH_<SETTING>="<value>"`
 
 |Value|Invalid|Default|Description|
 |-|-|-|-|
@@ -92,13 +92,13 @@ Bfetch is configured through environment variables: `export BFETCH_<SETTING>="<v
 |||||
 |`BFETCH_TEMPORARY`|`<path/to/file>`|`/tmp/bfetch`|Temporary file's location|
 |||||
-|`BFETCH_CLASSIC_MODE`|`true\|false`|`false`|Make Bfetch prefer classic mode when both mode are possible|
+|`BFETCH_CLASSIC_MODE`|`true\|false`|`false`|Make SuperB Fetch prefer classic mode when both mode are possible|
 |`BFETCH_ART_RIGHT`|`true\|false`|`false`|Render art on the right when using classic mode|
 |`BFETCH_PADDING`|`0+`|`1`|Padding fetch when using classic mode|
 |`BFETCH_SEPARATOR`|`0+`|`2`|Separate info and art when using classic mode|
 |`BFETCH_PROMPT_HEIGHT`|`0+`|`1`|Acknowledge how high the shell prompt is and counter it so the prompt don't push the fetch out|
 
-Bfetch will export the maximum size that an element can get:
+SuperB Fetch will export the maximum size that an element can get:
 
 |Value|Description|
 |-|-|
@@ -112,7 +112,7 @@ Bfetch will export the maximum size that an element can get:
 ###### [Here is an example of a color element that can be resized based on it's maximum size](https://github.com/NNBnh/dots/blob/master/home/.config/bfetch/color)
 
 ### Info element
-Bfetch looking for and execute `$XDG_CONFIG_HOME/bfetch/info` for info element as default, you can copy [this info template](https://github.com/NNBnh/textart-collections/blob/main/fetch/info.textart) with [Fetchutils](https://github.com/lptstr/fetchutils) as a starting point and customizing.
+SuperB Fetch looking for and execute `$XDG_CONFIG_HOME/bfetch/info` for info element as default, you can copy [this info template](https://github.com/NNBnh/textart-collections/blob/main/fetch/info.textart) with [Fetchutils](https://github.com/lptstr/fetchutils) as a starting point and customizing.
 
 ###### [Learn about `.textart` here](https://github.com/NNBnh/textart-collections/wiki)
 
@@ -128,8 +128,6 @@ Special thanks to:
 - [**Fetchutils**](https://github.com/lptstr/fetchutils) by [LPTSTR](https://github.com/lptstr)
 - [**Pure sh bible**](https://github.com/dylanaraps/pure-sh-bible) also by [Dylan](https://github.com/dylanaraps)
 - [**Carbon**](https://carbon.now.sh) by [@carbon_app](https://twitter.com/carbon_app)
-
-###### This project did not take it's name from [**ZeroL00P's Bfetch**](https://github.com/Mati232411/bfetch) or [**Edoardo Zerbo's Bfetch**](https://gitlab.com/nautilor/bfetch). The "B" in Bfetch stands for "*SuperB*" like all my other project names: [Bawkpack](https://github.com/NNBnh/bawkpack), [BUI](https://github.com/NNBnh/bui.kak)...
 
 <br><br><br><br>
 

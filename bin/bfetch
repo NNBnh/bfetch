@@ -41,7 +41,6 @@ CLASSIC_ART_RIGHT="${BFETCH_ART_RIGHT:-false}"
 PADDING="${BFETCH_PADDING:-1}"
 SEPARATOR="${BFETCH_SEPARATOR:-2}"
 PROMPT_HEIGHT="${BFETCH_PROMPT_HEIGHT:-1}"
-
 TERM_SIZE=$(stty size)
 TERM_HEIGHT="${TERM_SIZE% *}"
 TERM_WIDTH="${TERM_SIZE#* }"
@@ -56,14 +55,14 @@ done
 
 # Functions
 bfetch_help() {
-	INFO_COMMANDS="printf \"${1:+Bfetch: $1\n\n\n} Bfetch is a SuperB general-purpose fetch displayer
+	INFO_COMMANDS="printf \"${1:+Bfetch: $1\n\n\n} SuperB Fetch is a SuperB general-purpose fetch displayer
 written in pure sh that take user commands output
 and change how it display dynamic with the terminal size.
 
 USAGE: bfetch
 
 CONFIGURATION:
-Bfetch is configured through environment variables:
+SuperB Fetch is configured through environment variables:
     export BFETCH_<SETTING>=\\\"<value>\\\"
 
 BFETCH_INFO=\\\"<commands>\\\"
@@ -75,7 +74,7 @@ BFETCH_COLOR=\\\"<commands>\\\"
 BFETCH_TEMPORARY=\\\"<path/to/file>\\\"
     Temporary file's location.
 BFETCH_CLASSIC_MODE=\\\"[true|false]\\\"
-    Make Bfetch prefer classic mode when both mode are true.
+    Make SuperB Fetch prefer classic mode when both mode are true.
 BFETCH_ART_RIGHT=\\\"[true|false]\\\"
     Render art on the right when using classic mode.
 BFETCH_PADDING=\\\"0+\\\"
@@ -181,7 +180,6 @@ for element in INFO ART COLOR; do
 		eval "export BFETCH_${element}_WIDTH=\$(( TERM_WIDTH - used_width ))"
 
 		eval "TEXTART_$element=\$(script --quiet /dev/null --command \"\$${element}_COMMANDS\")"
-
 		eval "printf '%s' \"\$TEXTART_$element\" | sed -e 's/\x1B\[[0-9;]*[JKmsu]//g' -e 's/./-/g'" > "$TEMPORARY"
 
 		height='0'
@@ -251,6 +249,8 @@ done
 [ "$mode" = 'paper'   ] && fetch_paper
 
 printf "\033[?25l\033[?7l\033[0m$print\033[?25h\033[?7h\n"
+
+rm "$TEMPORARY"
 
 
 exit 0 # 256!!!

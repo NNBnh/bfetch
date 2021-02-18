@@ -1,0 +1,36 @@
+.TH BFETCH "1" "2021" "NNB" "User Commands"
+.SH NAME
+SuperB Fetch \- Dynamic fetch displayer that SuperB
+.SH SYNOPSIS
+.B bfetch
+.SH DESCRIPTION
+SuperB Fetch is a SuperB general-purpose fetch displayer written in pure sh that take user commands output and change how it display dynamic with the terminal size.
+.SH ENVIRONMENT VARIABLES
+\fBBFETCH_INFO\fR
+Read this commands output as infomation element (default: $XDG_CONFIG_HOME/bfetch/info)
+.TP
+\fBBFETCH_ART\fR
+Read this commands output as art element (default: $XDG_CONFIG_HOME/bfetch/art)
+.TP
+\fBBFETCH_COLOR\fR
+Read this commands output as color element (default: $XDG_CONFIG_HOME/bfetch/color)
+.TP
+\fBBFETCH_TEMPORARY\fR
+Temporary file's location (default: /tmp/bfetch)
+.TP
+\fBBFETCH_CLASSIC_MODE\fR
+Make SuperB Fetch prefer classic mode when both mode are possible (default: false)
+.TP
+\fBBFETCH_ART_RIGHT\fR
+Render art on the right when using classic mode (default: false)
+.TP
+\fBBFETCH_PADDING\fR
+Padding fetch when using classic mode (default: 1)
+.TP
+\fBBFETCH_SEPARATOR\fR
+Separate info and art when using classic mode (default: 2)
+.TP
+\fBBFETCH_PROMPT_HEIGHT\fR
+Acknowledge how high the shell prompt is and counter it so the prompt don't push the fetch out (default: 1)
+.SH REPORTING BUGS
+Report bugs to https://github.com/NNBnh/bfetch/issues
