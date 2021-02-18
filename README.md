@@ -14,8 +14,8 @@ This has led me to create **SuperB Fetch**, a dynamic fetching tool with an cust
 
 | |[Neofetch](https://github.com/dylanaraps/neofetch)|[Pfetch](https://github.com/dylanaraps/pfetch)|
 |:-:|-|-|
-|Without SuperB Fetch|![Neofetch](image/neofetch.png)|![Pfetch](image/pfetch.png)|
-|With SuperB Fetch|![Bfetch](image/neofetch-bfetch.png)|![Bfetch](image/pfetch-bfetch.png)|
+|Without SuperB Fetch|![Neofetch](https://user-images.githubusercontent.com/43980777/108312895-ef3cf400-71e9-11eb-8783-5d5d437c166a.png)|![Pfetch](https://user-images.githubusercontent.com/43980777/108312916-f532d500-71e9-11eb-9313-66363806bb4e.png)|
+|With SuperB Fetch|![Bfetch](https://user-images.githubusercontent.com/43980777/108312905-f237e480-71e9-11eb-97db-4f2d0f5cdb8b.png)|![Bfetch](https://user-images.githubusercontent.com/43980777/108312925-f82dc580-71e9-11eb-97ab-1d9becab58dd.png)|
 
 ### Features
 - Super **minimum** with exactly [**256** lines of `sh`](bfetch#L256) and [**no dependencies**](#dependencies) (if you don't count `sh`).
@@ -29,7 +29,7 @@ This has led me to create **SuperB Fetch**, a dynamic fetching tool with an cust
 
 |Paper mode|Classic mode|
 |-|-|
-|![Paper mode](image/paper-mode.png)|![Classic mode](image/classic-mode.png)|
+|![Paper mode](https://user-images.githubusercontent.com/43980777/108312884-eba96d00-71e9-11eb-90f7-301537ba2000.png)|![Classic mode](https://user-images.githubusercontent.com/43980777/108312871-e64c2280-71e9-11eb-8569-f38765891480.png)|
 
 ## Contents
 - [About](#about)
