@@ -1,5 +1,5 @@
 <p align="center"><img width="100%" src="https://user-images.githubusercontent.com/43980777/107769286-5a11a980-6d6a-11eb-9d65-ed07bf79a5c0.png"></p>
-<p align="center"><img src="https://img.shields.io/github/license/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=for-the-badge" alt="License: GPL-3.0"> <img src="https://img.shields.io/github/languages/top/NNBnh/bfetch?logo=gnu-bash&labelColor=073551&color=4EAA25&logoColor=FFFFFF&style=for-the-badge" alt="Shell: 100%"> <img src="https://img.shields.io/badge/development-completed-%234EAA25.svg?labelColor=073551&style=for-the-badge&logoColor=FFFFFF" alt="Development completed"></p>
+<p align="center"><img src="https://img.shields.io/github/license/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=for-the-badge" alt="License: GPL-3.0"> <img src="https://img.shields.io/badge/development-completed-%234EAA25.svg?labelColor=073551&style=for-the-badge&logoColor=FFFFFF" alt="Development completed"></p>
 <p align="center"><img src="https://img.shields.io/github/watchers/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=flat-square"> <img src="https://img.shields.io/github/stars/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=flat-square"> <img src="https://img.shields.io/github/forks/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=flat-square"> <img src="https://img.shields.io/github/issues/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=flat-square"></p>
 
 ## About
@@ -70,6 +70,18 @@ For [Arch-Linux base distro](https://archlinux.org), install [this AUR package](
 
 ```sh
 yay -Sy superbfetch-git
+```
+
+For [`bpkg`](https://github.com/bpkg/bpkg) user:
+
+```sh
+bpkg install NNBnh/bfetch
+```
+
+For [Basher](https://github.com/bpkg/bpkg) user:
+
+```sh
+basher install NNBnh/bfetch
 ```
 
 ###### If you can and want to port SuperB Fetch to other package managers, feel free to do so.
