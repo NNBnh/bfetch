@@ -1,11 +1,6 @@
 <p align="center"><img width="100%" src="https://user-images.githubusercontent.com/43980777/107769286-5a11a980-6d6a-11eb-9d65-ed07bf79a5c0.png"></p>
-<<<<<<< HEAD
-<p align="center"><a href="https://github.com/NNBnh/bfetch/blob/main/LICENSE"><img src="https://img.shields.io/github/license/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=for-the-badge" alt="License: GPL-3.0"></a> <img src="https://img.shields.io/badge/development-completed-%234EAA25.svg?labelColor=073551&style=for-the-badge&logoColor=FFFFFF" alt="Development completed"></p>
-<p align="center"><a href="https://github.com/NNBnh/bfetch/watchers"><img src="https://img.shields.io/github/watchers/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=flat-square"></a> <a href="https://github.com/NNBnh/bfetch/stargazers"><img src="https://img.shields.io/github/stars/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=flat-square"></a> <a href="https://github.com/NNBnh/bfetch/network/members"><img src="https://img.shields.io/github/forks/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=flat-square"></a> <a href="https://github.com/NNBnh/bfetch/issues"><img src="https://img.shields.io/github/issues/NNBnh/bfetch?labelColor=073551&color=4EAA25&style=flat-square"></a></p>
-=======
 <p align="center"><img src="https://img.shields.io/github/license/NNBnh/bfetch?labelColor=2A2734&color=DEAB63&style=for-the-badge" alt="License: GPL-3.0"> <img src="https://img.shields.io/badge/development-completed-%23DEAB63.svg?labelColor=2A2734&style=for-the-badge&logoColor=FFFFFF" alt="Development completed"></p>
 <p align="center"><img src="https://img.shields.io/github/watchers/NNBnh/bfetch?labelColor=2A2734&color=DEAB63&style=flat-square"> <img src="https://img.shields.io/github/stars/NNBnh/bfetch?labelColor=2A2734&color=DEAB63&style=flat-square"> <img src="https://img.shields.io/github/forks/NNBnh/bfetch?labelColor=2A2734&color=DEAB63&style=flat-square"> <img src="https://img.shields.io/github/issues/NNBnh/bfetch?labelColor=2A2734&color=DEAB63&style=flat-square"></p>
->>>>>>> fe560113c3d32962300856429029a1780ca66a86
 
 ## About
 **SuperB Fetch** (a.k.a `bfetch`) is a *SuperB* general-purpose fetch displayer written in [`portable sh`](https://github.com/dylanaraps/pure-sh-bible) that take user commands output and change how it display dynamic with the terminal size.
