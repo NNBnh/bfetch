@@ -51,7 +51,7 @@ git clone https://github.com/NNBnh/bfetch.git ~/.local/share/bfetch
 ln -s ~/.local/share/bfetch/bin/bfetch ~/.local/bin/bfetch
 ```
 
-#### Package manager
+#### 📦 Package manager
 For [Arch-Linux base distro](https://archlinux.org), install [this AUR package](https://aur.archlinux.org/packages/superbfetch-git):
 
 ```sh
