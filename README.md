@@ -2,12 +2,12 @@
 <p align="center"><a href="https://github.com/NNBnh/bfetch/blob/main/LICENSE"><img src="https://img.shields.io/github/license/NNBnh/bfetch?labelColor=2A2734&color=DEAB63&style=for-the-badge" alt="License: GPL-3.0"></a> <img src="https://img.shields.io/badge/development-completed-%23DEAB63.svg?labelColor=2A2734&style=for-the-badge&logoColor=FFFFFF" alt="Development completed"></p>
 <p align="center"><a href="https://github.com/NNBnh/bfetch/watchers"><img src="https://img.shields.io/github/watchers/NNBnh/bfetch?labelColor=2A2734&color=DEAB63&style=flat-square"></a> <a href="https://github.com/NNBnh/bfetch/stargazers"><img src="https://img.shields.io/github/stars/NNBnh/bfetch?labelColor=2A2734&color=DEAB63&style=flat-square"></a> <a href="https://github.com/NNBnh/bfetch/network/members"><img src="https://img.shields.io/github/forks/NNBnh/bfetch?labelColor=2A2734&color=DEAB63&style=flat-square"></a> <a href="https://github.com/NNBnh/bfetch/issues"><img src="https://img.shields.io/github/issues/NNBnh/bfetch?labelColor=2A2734&color=DEAB63&style=flat-square"></a></p>
 
-## About
+## 💡 About
 **SuperB Fetch** (a.k.a `bfetch`) is a *SuperB* general-purpose fetch displayer written in [`portable sh`](https://github.com/dylanaraps/pure-sh-bible) that take user commands output and change how it display dynamic with the terminal size.
 
 <p align="center"><a href="https://asciinema.org/a/381349" target="_blank"><img src="https://asciinema.org/a/381349.svg"></a></p>
 
-### Story
+### 📔 Story
 As a Linux ricer, I kile to make [**Neofetch**](https://github.com/dylanaraps/neofetch) automatically run when the terminal start.
 This was fine until I switched to using the tiled window manager, the terminal is often too small leading the fetch get crop off, even with [**Pfetch**](https://github.com/dylanaraps/pfetch), the poblem could appear.
 This has led me to create **SuperB Fetch**, a dynamic fetching tool with an customization spirit from [**Ufetch**](https://gitlab.com/jschx/ufetch).
@@ -17,40 +17,26 @@ This has led me to create **SuperB Fetch**, a dynamic fetching tool with an cust
 |Without SuperB Fetch|![Neofetch](https://user-images.githubusercontent.com/43980777/108312895-ef3cf400-71e9-11eb-8783-5d5d437c166a.png)|![Pfetch](https://user-images.githubusercontent.com/43980777/108312916-f532d500-71e9-11eb-9313-66363806bb4e.png)|
 |With SuperB Fetch|![Bfetch](https://user-images.githubusercontent.com/43980777/108312905-f237e480-71e9-11eb-97db-4f2d0f5cdb8b.png)|![Bfetch](https://user-images.githubusercontent.com/43980777/108312925-f82dc580-71e9-11eb-97ab-1d9becab58dd.png)|
 
-### Features
-- Super **minimum** with exactly [**256** lines of `sh`](bfetch#L256) and [**no dependencies**](#dependencies) (if you don't count `sh`).
+### ✨ Features
+- Super **minimum** with exactly [**256** lines of `sh`](bfetch#L256) and [**no dependencies**](#-dependencies) (if you don't count `sh`).
 - Super **flexible**:
   - **Align/shift/change mode** contents based on terminal size.
   - **Hide** some elements if terminal is too small.
 - Super **customizable**:
   - SuperB Fetch can **take commands output** and use it. By so, SuperB Fetch can display **anything** you want, **however** you want.
-  - And even more [**config options**](#configuration)
+  - And even more [**config options**](#%EF%B8%8F-configuration)
 - Have **two mode**:
 
 |Paper mode|Classic mode|
 |-|-|
 |![Paper mode](https://user-images.githubusercontent.com/43980777/108312884-eba96d00-71e9-11eb-90f7-301537ba2000.png)|![Classic mode](https://user-images.githubusercontent.com/43980777/108312871-e64c2280-71e9-11eb-8569-f38765891480.png)|
 
-## Contents
-- [About](#about)
-  - [Story](#story)
-  - [Features](#features)
-- [Contents](#contents)
-- [Setup](#setup)
-  - [Dependencies](#dependencies)
-  - [Installation](#installation)
-- [Usage](#usage)
-- [Configuration](#configuration)
-  - [Info element](#info-element)
-  - [Art element and color element](#art-element-and-color-element)
-- [Credits](#credits)
-
-## Setup
-### Dependencies
+## 🚀 Setup
+### 🧾 Dependencies
 - `sh` to process
 
-### Installation
-#### Manually
+### 📥 Installation
+#### 🔧 Manually
 - Option 1: using `curl`
 
 ```sh
@@ -84,16 +70,16 @@ For [Basher](https://github.com/bpkg/bpkg) user:
 basher install NNBnh/bfetch
 ```
 
-###### If you can and want to port SuperB Fetch to other package managers, feel free to do so.
+> *If you can and want to port SuperB Fetch to other package managers, feel free to do so.*
 
-## Usage
+## ⌨️ Usage
 Run SuperB Fetch in the terminal:
 
 ```sh
 bfetch
 ```
 
-## Configuration
+## ⚙️ Configuration
 SuperB Fetch is configured through environment variables: `export BFETCH_<SETTING>="<value>"`
 
 |Value|Invalid|Default|Description|
@@ -121,17 +107,17 @@ SuperB Fetch will export the maximum size that an element can get:
 |`BFETCH_COLOR_HEIGHT`|Maximum height of color element|
 |`BFETCH_COLOR_WIDTH`|Maximum width of color element|
 
-###### [Here is an example of a color element that can be resized based on it's maximum size](https://github.com/NNBnh/dots/blob/master/home/.config/bfetch/color)
+> *[Here is an example of a color element that can be resized based on it's maximum size](https://github.com/NNBnh/dots/blob/master/home/.config/bfetch/color)*
 
-### Info element
+### ℹ️ Info element
 SuperB Fetch looking for and execute `$XDG_CONFIG_HOME/bfetch/info` for info element as default, you can copy [this info template](https://github.com/NNBnh/textart-collections/blob/main/fetch/info.textart) with [Fetchutils](https://github.com/lptstr/fetchutils) as a starting point and customizing.
 
-###### [Learn about `.textart` here](https://github.com/NNBnh/textart-collections/wiki)
+> *Make sure the file is executable*
 
-### Art element and color element
-For art element and color element, take a look at [NNB's textart collections](https://github.com/NNBnh/textart-collections) and [other textart resources](https://github.com/NNBnh/textart-collections#resources).
+### 🖼️ Art and color element
+For art element and color element, take a look at [NNB's textart collections](https://github.com/NNBnh/textart-collections) and [other textart resources](https://github.com/NNBnh/textart-collections#-resources).
 
-## Credits
+## 💌 Credits
 Special thanks to:
 - [**Julian Marcos**](https://github.com/Juliaria08) for porting this package to the [AUR](https://aur.archlinux.org/packages/superbfetch-git)
 - [**Neofetch**](https://github.com/dylanaraps/neofetch) by [Dylan](https://github.com/dylanaraps)
