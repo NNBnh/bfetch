@@ -82,7 +82,7 @@ bfetch
 ## ⚙️ Configuration
 SuperB Fetch is configured through environment variables: `export BFETCH_<SETTING>="<value>"`
 
-|Value|Invalid|Default|Description|
+|Value|Valid|Default|Description|
 |-|-|-|-|
 |`BFETCH_INFO`|`<commands>`|`$XDG_CONFIG_HOME/bfetch/info` (`~/.config/bfetch/info`)|Read this commands output as infomation element (OS, WM, terminal, ...)|
 |`BFETCH_ART`|`<commands>`|`$XDG_CONFIG_HOME/bfetch/art` (`~/.config/bfetch/art`)|Read this commands output as art element (operating system logo)|
