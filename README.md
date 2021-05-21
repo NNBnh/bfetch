@@ -18,7 +18,7 @@ This has led me to create **SuperB Fetch**, a dynamic fetching tool with an cust
 |With SuperB Fetch|![Bfetch](https://user-images.githubusercontent.com/43980777/108312905-f237e480-71e9-11eb-97db-4f2d0f5cdb8b.png)|![Bfetch](https://user-images.githubusercontent.com/43980777/108312925-f82dc580-71e9-11eb-97ab-1d9becab58dd.png)|
 
 ### ✨ Features
-- Super **minimum** with exactly [**256** lines of `sh`](bfetch#L256) and [**no dependencies**](#-dependencies) (if you don't count `sh`).
+- Super **minimum** with exactly [**256** lines of `sh`](bin/bfetch#L256) and [**no dependencies**](#-dependencies) (if you don't count `sh`).
 - Super **flexible**:
   - **Align/shift/change mode** contents based on terminal size.
   - **Hide** some elements if terminal is too small.
