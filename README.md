@@ -1,5 +1,5 @@
 <p align="center"><img width="100%" src="https://user-images.githubusercontent.com/43980777/107769286-5a11a980-6d6a-11eb-9d65-ed07bf79a5c0.png"></p>
-<p align="center"><a href="https://github.com/NNBnh/bfetch/blob/main/LICENSE"><img src="https://img.shields.io/github/license/NNBnh/bfetch?labelColor=2A2734&color=DEAB63&style=for-the-badge" alt="License: GPL-3.0"></a> <img src="https://img.shields.io/badge/development-completed-%23DEAB63.svg?labelColor=2A2734&style=for-the-badge&logoColor=FFFFFF" alt="Development completed"></p>
+<p align="center"><a href="https://github.com/NNBnh/bfetch/blob/main/LICENSE"><img src="https://img.shields.io/github/license/NNBnh/bfetch?labelColor=2A2734&color=DEAB63&style=for-the-badge" alt="License: GPL-3.0"></a> <a href="https://gist.github.com/NNBnh/9ef453aba3efce26046e0d3119dab5a7#development-completed"><img src="https://img.shields.io/badge/development-completed-%23DEAB63.svg?labelColor=2A2734&style=for-the-badge&logoColor=FFFFFF" alt="Development completed"></a></p>
 <p align="center"><a href="https://github.com/NNBnh/bfetch/watchers"><img src="https://img.shields.io/github/watchers/NNBnh/bfetch?labelColor=2A2734&color=DEAB63&style=flat-square"></a> <a href="https://github.com/NNBnh/bfetch/stargazers"><img src="https://img.shields.io/github/stars/NNBnh/bfetch?labelColor=2A2734&color=DEAB63&style=flat-square"></a> <a href="https://github.com/NNBnh/bfetch/network/members"><img src="https://img.shields.io/github/forks/NNBnh/bfetch?labelColor=2A2734&color=DEAB63&style=flat-square"></a> <a href="https://github.com/NNBnh/bfetch/issues"><img src="https://img.shields.io/github/issues/NNBnh/bfetch?labelColor=2A2734&color=DEAB63&style=flat-square"></a></p>
 
 ## 💡 About
@@ -12,7 +12,7 @@ As a Linux ricer, I kile to make [**Neofetch**](https://github.com/dylanaraps/ne
 This was fine until I switched to using the tiled window manager, the terminal is often too small leading the fetch get crop off, even with [**Pfetch**](https://github.com/dylanaraps/pfetch), the poblem could appear.
 This has led me to create **SuperB Fetch**, a dynamic fetching tool with an customization spirit from [**Ufetch**](https://gitlab.com/jschx/ufetch).
 
-| |[Neofetch](https://github.com/dylanaraps/neofetch)|[Pfetch](https://github.com/dylanaraps/pfetch)|
+||[Neofetch](https://github.com/dylanaraps/neofetch)|[Pfetch](https://github.com/dylanaraps/pfetch)|
 |:-:|-|-|
 |Without SuperB Fetch|![Neofetch](https://user-images.githubusercontent.com/43980777/108312895-ef3cf400-71e9-11eb-8783-5d5d437c166a.png)|![Pfetch](https://user-images.githubusercontent.com/43980777/108312916-f532d500-71e9-11eb-9313-66363806bb4e.png)|
 |With SuperB Fetch|![Bfetch](https://user-images.githubusercontent.com/43980777/108312905-f237e480-71e9-11eb-97db-4f2d0f5cdb8b.png)|![Bfetch](https://user-images.githubusercontent.com/43980777/108312925-f82dc580-71e9-11eb-97ab-1d9becab58dd.png)|
@@ -33,19 +33,17 @@ This has led me to create **SuperB Fetch**, a dynamic fetching tool with an cust
 
 ## 🚀 Setup
 ### 🧾 Dependencies
-- `sh` to process
+- [Unix commands](https://en.wikipedia.org/wiki/List_of_Unix_commands) to process
 
 ### 📥 Installation
 #### 🔧 Manually
-- Option 1: using `curl`
-
+Option 1: using `curl`
 ```sh
 curl https://raw.githubusercontent.com/NNBnh/bfetch/main/bin/bfetch > ~/.local/bin/bfetch
 chmod +x ~/.local/bin/bfetch
 ```
 
-- Option 2: using `git`
-
+Option 2: using `git`
 ```sh
 git clone https://github.com/NNBnh/bfetch.git ~/.local/share/bfetch
 ln -s ~/.local/share/bfetch/bin/bfetch ~/.local/bin/bfetch
@@ -53,19 +51,16 @@ ln -s ~/.local/share/bfetch/bin/bfetch ~/.local/bin/bfetch
 
 #### 📦 Package manager
 For [Arch-Linux base distro](https://archlinux.org), install [this AUR package](https://aur.archlinux.org/packages/superbfetch-git):
-
 ```sh
 paru -Sy superbfetch-git
 ```
 
 For [`bpkg`](https://github.com/bpkg/bpkg) user:
-
 ```sh
 bpkg install NNBnh/bfetch
 ```
 
 For [Basher](https://github.com/bpkg/bpkg) user:
-
 ```sh
 basher install NNBnh/bfetch
 ```
@@ -74,14 +69,12 @@ basher install NNBnh/bfetch
 
 ## ⌨️ Usage
 Run SuperB Fetch in the terminal:
-
 ```sh
 bfetch
 ```
 
 ## ⚙️ Configuration
 SuperB Fetch is configured through environment variables: `export BFETCH_<SETTING>="<value>"`
-
 |Value|Valid|Default|Description|
 |-|-|-|-|
 |`BFETCH_INFO`|`<commands>`|`$XDG_CONFIG_HOME/bfetch/info` (`~/.config/bfetch/info`)|Read this commands output as infomation element (OS, WM, terminal, ...)|
@@ -97,7 +90,6 @@ SuperB Fetch is configured through environment variables: `export BFETCH_<SETTIN
 |`BFETCH_PROMPT_HEIGHT`|`0+`|`1`|Acknowledge how high the shell prompt is and counter it so the prompt don't push the fetch out|
 
 SuperB Fetch will export the maximum size that an element can get:
-
 |Value|Description|
 |-|-|
 |`BFETCH_INFO_HEIGHT`|Maximum height of infomation element|
