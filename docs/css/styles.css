@@ -1,0 +1,324 @@
+@import url('https://raw.githubusercontent.com/JetBrains/JetBrainsMono/master/web/eot/JetBrainsMono-Regular.eot');
+
+
+:root {
+	--fg: #121212;
+	--bg: #FFFFFF;
+	--term-fg: #FCE8C3;
+	--term-bg: #1C1B19;
+	--term-black: #1C1B19;
+	--term-red: #EF2F27;
+	--term-green: #519F50;
+	--term-yellow: #FBB829;
+	--term-blue: #2C78BF;
+	--term-magenta: #E02C6D;
+	--term-cyan: #0AAEB3;
+	--term-white: #918175;
+	--term-brightblack: #2D2C29;
+	--term-brightred: #F75341;
+	--term-brightgreen: #98BC37;
+	--term-brightyellow: #FED06E;
+	--term-brightblue: #68A8E4;
+	--term-brightmagenta: #FF5C8F;
+	--term-brightcyan: #53FDE9;
+	--term-brightwhite: #FCE8C3;
+	--term-orange: #D75F00;
+	--term-brorange: #FF8700;
+	--term-hard_black: #121212;
+	--term-xgray1: #262626;
+	--term-xgray2: #303030;
+	--term-xgray3: #3A3A3A;
+	--term-xgray4: #444444;
+	--term-xgray5: #4E4E4E;
+
+	--sec-sep: 20vh;
+}
+
+* {
+	font-family: "JetBrains Mono", monospace;
+	font-size: 2.4vh;
+}
+
+body {
+	margin: 0;
+	background-color: var(--bg);
+	color: var(--fg);
+}
+
+div {
+	padding: 0;
+}
+
+pre {
+	background-color: transparent;
+	margin: 0 auto;
+	width: max-content;
+}
+
+div.big-box {
+	margin: 0 !important;
+	position: relative;
+}
+
+div.box {
+	background-color: var(--bg);
+	border-radius: 1em;
+	padding: 1em;
+}
+
+div.terminal {
+	padding: 0;
+	margin: 0 !important;
+}
+
+b {
+	font-size: unset;
+}
+
+b.color-line-0 {
+	background-color: var(--term-black);
+}
+b.color-line-1 {
+	background-color: var(--term-red);
+}
+b.color-line-2 {
+	background-color: var(--term-green);
+}
+b.color-line-3 {
+	background-color: var(--term-yellow);
+}
+b.color-line-4 {
+	background-color: var(--term-blue);
+}
+b.color-line-5 {
+	background-color: var(--term-magenta);
+}
+b.color-line-6 {
+	background-color: var(--term-cyan);
+}
+b.color-line-7 {
+	background-color: var(--term-white);
+}
+b.color-line-8 {
+	background-color: var(--term-brightblack);
+}
+b.color-line-9 {
+	background-color: var(--term-brightred);
+}
+b.color-line-10 {
+	background-color: var(--term-brightgreen);
+}
+b.color-line-11 {
+	background-color: var(--term-brightyellow);
+}
+b.color-line-12 {
+	background-color: var(--term-brightblue);
+}
+b.color-line-13 {
+	background-color: var(--term-brightmagenta);
+}
+b.color-line-14 {
+	background-color: var(--term-brightcyan);
+}
+b.color-line-15 {
+	background-color: var(--term-brightwhite);
+}
+
+h1, h2 {
+	text-transform: capitalize;
+	text-align: center;
+	margin-top: 0;
+}
+
+h1 {
+	font-size: 3em;
+}
+
+h2 {
+	font-size: 2em;
+}
+
+.terminal {
+	color: var(--term-fg);
+	padding: 0;
+}
+
+header.terminal, div.features {
+	background-color: var(--term-bg)
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-size: cover;
+	background-position-x: center;
+}
+
+header.terminal {
+	background-image: linear-gradient(#1C1B19e6, #1C1B19c8), url("https://raw.githubusercontent.com/NNBnh/wallpapers/main/brown-concrete-house-surrounded-by-plants.jpg");
+	background-position-x: 25%;
+	min-height: 90vh;
+}
+
+pre b.pic,pre b.label {
+	color: var(--term-brightblue);
+}
+
+pre b.label {
+	text-transform: uppercase;
+	color: var(--term-blue);
+}
+
+header.terminal pre b.pic {
+	color: var(--term-brightgreen);
+}
+
+header.terminal pre b.label {
+	color: var(--term-green);
+}
+
+header.terminal pre b.pic {
+	font-style: italic;
+}
+
+.left {
+	width: 100%;
+}
+
+a.author {
+	display:inline-block;
+	color: var(--term-white);
+	font-style: italic;
+	text-decoration: none;
+}
+
+b.term-dir {
+	color: var(--term-fg);
+	white-space: pre;
+}
+
+b.cursor {
+	color: var(--term-fg);
+	animation-name: cursor;
+	animation-duration: 2s;
+	animation-iteration-count: infinite;
+}
+
+header.terminal b.cursor {
+	color: var(--term-brightgreen);
+}
+
+.window b.cursor {
+	color: var(--term-brightblue);
+}
+
+@keyframes cursor {
+	0%   {opacity:1;}
+	50%  {opacity:1;}
+	51%  {opacity:0;}
+	100% {opacity:0;}
+}
+
+div.not-layout {
+	padding: 0;
+}
+
+div.story, div.features {
+	padding: var(--sec-sep) 0;
+}
+
+a {
+	color: var(--term-blue);
+	text-decoration: none;
+}
+
+div.features {
+	background-image: linear-gradient(#1C1B19e6, #1C1B19e6), url("https://user-images.githubusercontent.com/43980777/127743302-3833c619-14f3-4252-ad2e-81e62ecfb9ab.jpg");
+}
+
+div.features h1 {
+	color: var(--bg);
+	margin-bottom: var(--sec-sep);
+}
+
+div.master-box {
+	max-width: 80%;
+	margin: 0 auto;
+}
+
+
+div.master-box div {
+	margin: 2em;
+}
+
+p.button {
+	background-color: var(--term-brightblue);
+	width: max-content;
+	padding: 1em;
+	margin: 0;
+	margin-left: auto;
+	border-radius: 0.5em;
+	transition-duration: 0.2s;
+}
+
+p.button:hover {
+	background-color: var(--term-brightblue);
+}
+
+p.button a {
+	color: var(--bg);
+	font-weight: bold;
+}
+
+div.demo {
+	background-image: linear-gradient(to bottom right, var(--term-brightblue), var(--term-brightmagenta));
+	padding: 5vh 10vw;
+	height: 100vh;
+	box-sizing: border-box;
+}
+
+div.window {
+	background-color: var(--term-bg);
+	width: 60vw;
+	height: 85vh;
+	max-width: 75vw;
+	max-height: 85vh;
+	margin: auto auto !important;
+	padding: 1em;
+	border-radius: 1em;
+	resize: both;
+	overflow: auto;
+}
+
+@media only screen and (max-width: 100vh) {
+	:root {
+		--sec-sep: 10vh;
+	}
+
+	* {
+		font-size: 3.2vw;
+	}
+
+	header.terminal pre {
+		padding: 3em 0;
+	}
+
+	div.master-box {
+		max-width: unset;
+	}
+
+	div.story div.master-box {
+		max-width: 90%;
+	}
+
+	a.author {
+		width: 75vw;
+		white-space: pre;
+	}
+
+	div.window {
+		height: unset;
+		padding: 2em;
+	}
+
+	div.window.terminal pre {
+		font-size: 2vw;
+	}
+}
