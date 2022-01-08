@@ -54,7 +54,7 @@ For [Arch-Linux base distro](https://archlinux.org), install [this AUR package](
 paru -Sy superbfetch-git
 ```
 
-For [`bpkg`](https://github.com/bpkg/bpkg) user:
+For [Bpkg](https://github.com/bpkg/bpkg) user:
 ```sh
 bpkg install NNBnh/bfetch
 ```
