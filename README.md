@@ -4,6 +4,8 @@
 ## 💡 About
 **SuperB Fetch** (a.k.a `bfetch`) is a *SuperB* general-purpose fetch displayer written in [`portable sh`](https://github.com/dylanaraps/pure-sh-bible) that take user commands output and change how it display dynamic with the terminal size.
 
+> *Check how people rice SuperB Fetch at [Bfetchporn](https://github.com/NNBnh/bfetch/discussions/1).*
+
 <p align="center"><a href="https://asciinema.org/a/381349" target="_blank"><img src="https://asciinema.org/a/381349.svg"></a></p>
 
 ### 📔 Story
