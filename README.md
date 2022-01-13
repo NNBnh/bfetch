@@ -61,7 +61,7 @@ For [Bpkg](https://github.com/bpkg/bpkg) user:
 bpkg install NNBnh/bfetch
 ```
 
-For [Basher](https://github.com/bpkg/bpkg) user:
+For [Basher](https://github.com/basherpm/basher) user:
 ```sh
 basher install NNBnh/bfetch
 ```
