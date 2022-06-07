@@ -100,8 +100,6 @@ SuperB Fetch will export the maximum size that an element can get:
 |`BFETCH_COLOR_HEIGHT`|Maximum height of color element|
 |`BFETCH_COLOR_WIDTH`|Maximum width of color element|
 
-> *[Here is an example of a color element that can be resized based on it's maximum size](https://github.com/NNBnh/dots/blob/master/home/.config/bfetch/color)*
-
 ### ℹ️ Info element
 SuperB Fetch looking for and execute `$XDG_CONFIG_HOME/bfetch/info` for info element as default, you can copy [this info template](https://github.com/NNBnh/textart-collections/blob/7367d278ce41a38783d7ce12b3b05175836213cc/fetch/info.textart) with [Fetchutils](https://github.com/lptstr/fetchutils) as a starting point and customizing.
 
