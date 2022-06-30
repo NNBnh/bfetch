@@ -2,16 +2,16 @@
 <p align="center"><a href="https://github.com/NNBnh/bfetch/blob/main/LICENSE"><img src="https://img.shields.io/github/license/NNBnh/bfetch?labelColor=2A2734&color=DEAB63&style=for-the-badge" alt="License: GPL-3.0"></a> <a href="https://gist.github.com/NNBnh/9ef453aba3efce26046e0d3119dab5a7#development-completed"><img src="https://img.shields.io/badge/development-completed-%23DEAB63.svg?labelColor=2A2734&style=for-the-badge&logoColor=FFFFFF" alt="Development completed"></a></p>
 
 ## 💡 About
-**SuperB Fetch** (a.k.a `bfetch`) is a *SuperB* general-purpose fetch displayer written in [`portable sh`](https://github.com/dylanaraps/pure-sh-bible) that take user commands output and change how it display dynamic with the terminal size.
+**SuperB Fetch** (a.k.a `bfetch`) is a *SuperB* general-purpose fetch displayer written in [`portable sh`](https://github.com/dylanaraps/pure-sh-bible) that takes user commands output and dynamically changes how it displays output based on the terminal size.
 
 > *Check how people rice SuperB Fetch at [Bfetchporn](https://github.com/NNBnh/bfetch/discussions/1).*
 
 <p align="center"><a href="https://asciinema.org/a/381349" target="_blank"><img src="https://asciinema.org/a/381349.svg"></a></p>
 
 ### 📔 Story
-As a Linux ricer, I like to make [**Neofetch**](https://github.com/dylanaraps/neofetch) automatically run when the terminal start.
-This was fine until I switched to using the tiled window manager, the terminal is often too small leading the fetch get crop off, even with [**Pfetch**](https://github.com/dylanaraps/pfetch), the poblem could appear.
-This has led me to create **SuperB Fetch**, a dynamic fetching tool with an customization spirit from [**Ufetch**](https://gitlab.com/jschx/ufetch).
+As a Linux ricer, I like to make [**Neofetch**](https://github.com/dylanaraps/neofetch) automatically run when the terminal starts.
+This was fine until I switched to using a tiled window manager, the terminal is often too small leading the fetch get cropped off, even with [**Pfetch**](https://github.com/dylanaraps/pfetch), the problem would appear.
+This has led me to create **SuperB Fetch**, a dynamic fetching tool the customization spirit of [**Ufetch**](https://gitlab.com/jschx/ufetch).
 
 ||[Neofetch](https://github.com/dylanaraps/neofetch)|[Pfetch](https://github.com/dylanaraps/pfetch)|
 |:-:|-|-|
