@@ -10,7 +10,7 @@
 
 ### 📔 Story
 As a Linux ricer, I like to make [**Neofetch**](https://github.com/dylanaraps/neofetch) automatically run when the terminal starts.
-This was fine until I switched to using a tiled window manager, the terminal is often too small leading the fetch get cropped off, even with [**Pfetch**](https://github.com/dylanaraps/pfetch), the problem would appear.
+This was fine until I switched to using a tiled window manager, the terminal is often too small leading to the fetch getting cropped off, even with [**Pfetch**](https://github.com/dylanaraps/pfetch), the problem would appear.
 This has led me to create **SuperB Fetch**, a dynamic fetching tool the customization spirit of [**Ufetch**](https://gitlab.com/jschx/ufetch).
 
 ||[Neofetch](https://github.com/dylanaraps/neofetch)|[Pfetch](https://github.com/dylanaraps/pfetch)|
