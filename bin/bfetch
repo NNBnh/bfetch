@@ -179,7 +179,12 @@ for element in INFO ART COLOR; do
 		eval "export BFETCH_${element}_HEIGHT=\$(( TERM_HEIGHT - used_height ))"
 		eval "export BFETCH_${element}_WIDTH=\$(( TERM_WIDTH - used_width ))"
 
-		eval "TEXTART_$element=\$(script --quiet /dev/null --command \"\$${element}_COMMANDS\")"
+		if [ -x "$(command -v unbuffer)" ]; then
+			eval "TEXTART_$element=\$(unbuffer -p \"\$${element}_COMMANDS\")"
+		else
+			eval "TEXTART_$element=\$(script --quiet /dev/null --command \"\$${element}_COMMANDS\")"
+		fi
+		
 		eval "printf '%s' \"\$TEXTART_$element\" | sed -e 's/\x1B\[[0-9;]*[JKmsu]//g' -e 's/./-/g'" > "$TEMPORARY"
 
 		height='0'
