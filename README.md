@@ -1,3 +1,5 @@
+> **📢 [Check out DIYfetch, the ultimate fetch tool template. It's the successor to SuperB Fetch!](https://github.com/info-mono/diyfetch)**
+
 <p align="center"><img width="100%" src="https://user-images.githubusercontent.com/43980777/107769286-5a11a980-6d6a-11eb-9d65-ed07bf79a5c0.png"></p>
 <p align="center">
   <a href="https://github.com/NNBnh/bfetch/blob/main/LICENSE"><img src="https://img.shields.io/github/license/NNBnh/bfetch?labelColor=2A2734&color=DEAB63&style=for-the-badge" alt="License: GPL-3.0"></a>
@@ -16,7 +18,7 @@
 
 As a Linux ricer, I like to make [**Neofetch**](https://github.com/dylanaraps/neofetch) automatically run when the terminal starts.
 This was fine until I switched to using a tiled window manager, the terminal is often too small leading to the fetch getting cropped off, even with [**Pfetch**](https://github.com/dylanaraps/pfetch), the problem would appear.
-This has led me to create **SuperB Fetch**, a dynamic fetching tool the customization spirit of [**Ufetch**](https://gitlab.com/jschx/ufetch).
+This has led me to create **SuperB Fetch**, a dynamic fetching tool with the customization spirit of [**Ufetch**](https://gitlab.com/jschx/ufetch).
 
 ||[Neofetch](https://github.com/dylanaraps/neofetch)|[Pfetch](https://github.com/dylanaraps/pfetch)|
 |:-:|-|-|
